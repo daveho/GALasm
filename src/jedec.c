@@ -11,6 +11,8 @@
 #include "galasm.h"
 #include <stdlib.h>
 
+static size_t WriteOutput(void *buf, size_t size, size_t nmemb, FILE *out);
+
 /******************************************************************************
 ** FileChecksum()
 *******************************************************************************
@@ -528,7 +530,8 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
                 filebuffer2++;
             }
                                                 /* save buffer */
-			result = fwrite(filebuffer,(size_t) 1, (size_t) (filebuffer2 - filebuffer),fp);
+			/* DHH - 24-Oct-2012: ensure lines are terminated with CRLF */
+			result = WriteOutput(filebuffer,(size_t) 1, (size_t) (filebuffer2 - filebuffer),fp);
 
             if (result != (filebuffer2 - filebuffer))
             {                                   /* write error? */
@@ -556,4 +559,27 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
     }
 
     FreeBuffer(first_buff);
+}
+
+/*
+ * DHH - 24-Oct-2012
+ * This function works like fwrite, but outputs newlines as CRLF.
+ * My GAL programmer (Wellon VP-190) doesn't like JEDEC files
+ * with bare newlines in them.
+ */
+static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
+{
+	unsigned char *buf = (unsigned char *) buf_;
+	size_t i;
+
+	for (i = 0; i < size*nmemb; i++) {
+		unsigned char byte = buf[i];
+		if (byte == '\n') {
+			fwrite("\r\n", 1, 2, out);
+		} else {
+			fwrite(&byte, 1, 1, out);
+		}
+	}
+
+	return nmemb;
 }
