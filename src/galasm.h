@@ -252,7 +252,7 @@ void  Is_AR_SP(UBYTE *ptr);
 /* support.c */
 char *GetBaseName(char *filename);
 int FileSize(char *filename);
-int   ReadFile(char *filename, int filesize, char *filebuff);
+int   ReadFile(char *filename, int filesize, UBYTE *filebuff);
 int   AddByte(struct ActBuffer *buff, UBYTE code);
 int   AddString(struct ActBuffer *buff, UBYTE *strnptr);
 void  IncPointer(struct ActBuffer *buff);
