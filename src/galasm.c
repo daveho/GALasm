@@ -164,16 +164,18 @@ int AssemblePldFile(char *file, struct Config *cfg)
 	int  	num_of_col,fsize;
 
         {
-            fsize = FileSize((UBYTE *)file);
+            fsize = FileSize(file);
 
 		if((fbuff = malloc(fsize)))
             {
-                if ((ReadFile((UBYTE *)file, fsize, fbuff)))
+                if ((ReadFile(file, fsize, fbuff)))
                 {
                     actptr  = fbuff;
                     buffend = fbuff+fsize;
                     linenum = 1;
 
+/* This code generates a warning about exceeding array bounds */
+#if	0
                     for (n = 0; n < sizeof(Jedec); n++)
                     {                            /* init. JEDEC structure */
                         if (n < LOGIC22V10_SIZE)
@@ -181,8 +183,10 @@ int AssemblePldFile(char *file, struct Config *cfg)
                         else
                             Jedec.GALLogic[n] = 0;         /* clear ACW... */
                     }
-
-
+#endif
+/* I think this is what is intended: GALLogic is set to 1s, rest is cleared */
+                    memset(&Jedec, 0, sizeof(Jedec));
+                    memset(Jedec.GALLogic, 1, sizeof(Jedec.GALLogic));
 
                     for (n = 0; n < 12; n++)
                     {                              /* clear OLMC structure */
@@ -1641,7 +1645,7 @@ void IsPinName(UBYTE *pinnames, int numofpins)
         n++;
     }
 
-    if (n)
+    if (n) {
         if ((n == 2 ) && !strncmp((char *)oldactptr, "NC", (size_t)2))
             actPin.p_Pin = NC_PIN;                      /* NC pin*/
         else
@@ -1661,6 +1665,7 @@ void IsPinName(UBYTE *pinnames, int numofpins)
                     break;
                 }
             }
+    }
 }
 
 

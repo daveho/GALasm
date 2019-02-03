@@ -103,7 +103,7 @@ int FileSize(char *filename)
 **
 ******************************************************************************/
 
-int ReadFile(char *filename, int filesize, char *filebuff)
+int ReadFile(char *filename, int filesize, UBYTE *filebuff)
 {
     int  actlen;
     FILE *fp;
