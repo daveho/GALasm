@@ -2140,10 +2140,10 @@ void WriteFuseFile(char *filename, int gal_type)
 
 	switch(gal_type)
 	{
-		case GAL16V8: 	num_of_col = MAX_FUSE_ADR16	+ 1;
-		case GAL20V8: 	num_of_col = MAX_FUSE_ADR20 + 1;
-		case GAL20RA10: num_of_col = MAX_FUSE_ADR20RA10	+ 1;
-		case GAL22V10:  num_of_col = MAX_FUSE_ADR22V10 + 1;
+		case GAL16V8: 	num_of_col = MAX_FUSE_ADR16	+ 1; break;
+		case GAL20V8: 	num_of_col = MAX_FUSE_ADR20 + 1; break;
+		case GAL20RA10: num_of_col = MAX_FUSE_ADR20RA10	+ 1; break;
+		case GAL22V10:  num_of_col = MAX_FUSE_ADR22V10 + 1; break;
 	}
 
         if ((fp = fopen(filename, (char *)"w")))
