@@ -73,13 +73,14 @@ int FileSize(char *filename)
 {
 	FILE *fp;
 
-	int size;
+	int size = 0;
 
 	if((fp = fopen(filename, "r")))
 	{
-		fseek(fp, 0, SEEK_END);
-
-		size = ftell(fp);
+		while (fgetc(fp) != EOF)
+		{
+			size++;
+		}
 
 		fclose(fp);
 	}
