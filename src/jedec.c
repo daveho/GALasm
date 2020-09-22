@@ -12,7 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-static size_t WriteOutput(void *buf, size_t size, size_t nmemb, FILE *out);
+static size_t WriteOutputWithCRLFLineEndings(void *buf, size_t size, size_t nmemb, FILE *out);
+static size_t WriteOutputWithNativeLineEndings(void *buf, size_t size, size_t nmemb, FILE *out);
 
 /******************************************************************************
 ** FileChecksum()
@@ -523,13 +524,18 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
     char   *append_mode;
 
 
-    //TODO introduce command line switch to allow for creating jedec file with:
-    //  Unix line endings from Windows
-    //  Windows line endings from Unix
-    //  Line endings according to the current platform
-    write = &WriteOutput;
-    write_mode = "w";
-    append_mode = "a";
+    if (cfg->ForceCRLF)
+    {
+        write = &WriteOutputWithCRLFLineEndings;
+        write_mode = "wb";
+        append_mode = "ab";
+    }
+    else
+    {
+        write = &WriteOutputWithNativeLineEndings;
+        write_mode = "w";
+        append_mode = "a";
+    }
 
 
 	if(!(first_buff = (struct Buffer *) calloc(sizeof(struct Buffer),1)))
@@ -627,7 +633,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
  * My GAL programmer (Wellon VP-190) doesn't like JEDEC files
  * with bare newlines in them.
  */
-static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
+static size_t WriteOutputWithCRLFLineEndings(void *buf_, size_t size, size_t nmemb, FILE *out)
 {
 	unsigned char *buf = (unsigned char *) buf_;
 	size_t i;
@@ -642,4 +648,10 @@ static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
 	}
 
 	return nmemb;
+}
+
+
+static size_t WriteOutputWithNativeLineEndings(void *buf_, size_t size, size_t nmemb, FILE *out)
+{
+    return fwrite(buf_, size, nmemb, out);
 }

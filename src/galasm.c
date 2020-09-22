@@ -2321,6 +2321,7 @@ int main(int argc, char *argv[])
 	cfg.GenPin 	 	= TRUE;
 	cfg.JedecSecBit 	= FALSE;
 	cfg.JedecFuseChk 	= FALSE;
+	cfg.ForceCRLF		= FALSE;
 
 	p = argv[1];
 
@@ -2358,15 +2359,21 @@ int main(int argc, char *argv[])
 				cfg.JedecFuseChk = TRUE;
 			break;
 
+			case 'w':
+			case 'W':
+				cfg.ForceCRLF = TRUE;
+			break;
+
 			case 'h':
 			case 'H':
 			case '?':
-	    		printf("Usage:\nGALasm [-scfpa] <filename>\n");
+				printf("Usage:\nGALasm [-scfpaw] <filename>\n");
 				printf(	"-s Enable security fuse\n"
 						"-c Do not create the .chp file\n"
 						"-f Do not create the .fus file\n"
 						"-p Do not create the .pin file\n"
-						"-a Restrict checksum to the fuse array only\n");
+						"-a Restrict checksum to the fuse array only\n"
+						"-w Force <CR><LF> line endings for .jed file overriding platform default\n");
 				return(0);
 
       		case '-': 
@@ -2397,7 +2404,7 @@ int main(int argc, char *argv[])
   	if(argc != 2) 
 	{
 		usage:
-    		printf("Usage:\nGALasm [-scfpa] <filename>\n");
+			printf("Usage:\nGALasm [-scfpaw] <filename>\n");
 			printf("Type GALasm -h for help\n");
 		return(5);
   	}
