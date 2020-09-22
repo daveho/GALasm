@@ -262,10 +262,10 @@ char *GetGALName(int galtype);
 void  ErrorReq(int errornum);
 
 /* Jedec.c */
-int   FileChecksum(char* filename, unsigned* pchecksum);
-int   FuseChecksum(int galtype);
-int   MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg);
-void  WriteJedecFile(char *filename, int galtype, struct Config *cfg);
+int      FileChecksum(char* filename, unsigned* pchecksum);
+unsigned FuseChecksum(int galtype);
+int      MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg);
+void     WriteJedecFile(char *filename, int galtype, struct Config *cfg);
 
 
 /* EOF */

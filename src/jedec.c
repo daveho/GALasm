@@ -82,10 +82,12 @@ int FileChecksum(char *filename, unsigned *pchecksum)
 **          structure.
 ******************************************************************************/
 
-int FuseChecksum(int galtype)
+unsigned FuseChecksum(int galtype)
 {
-    int     checksum, byte, n;
-    BYTE    *ptr, *ptrXOR, *ptrS1;
+    int      n;
+    unsigned checksum;
+    UBYTE    byte;
+    BYTE     *ptr, *ptrXOR, *ptrS1;
 
 
 
@@ -93,7 +95,9 @@ int FuseChecksum(int galtype)
     ptrXOR = &Jedec.GALXOR[0];
     ptrS1  = &Jedec.GALS1[0];
 
-    n = checksum = byte = 0;
+    n        = 0;
+    checksum = 0;
+    byte     = 0;
 
     for (;;)
     {
@@ -186,14 +190,14 @@ int FuseChecksum(int galtype)
 
         if (!((n + 9)%8))
         {
-            checksum += byte;
+            checksum = (checksum + byte) % 0x10000;
             byte = 0;
         }
 
         n++;
     }
 
-    checksum += byte;
+    checksum = (checksum + byte) % 0x10000;
 
     return(checksum);
 }
