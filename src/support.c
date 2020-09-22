@@ -46,6 +46,7 @@ char *GetBaseName(char *filename)
 
 	if((p = (char *)malloc(n+5)))
 	{
+		memset(p, ' ', n+4);
 		strncpy(p, filename, n); 
 		p[n+4] = '\0';
 
