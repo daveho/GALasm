@@ -2,6 +2,7 @@
 
 TARGET		= galasm
 OBJS		= galasm.o support.o jedec.o localize.o
+CC          = gcc
 
 CFLAGS		= -Wall -O2 -Iinclude -I.
 
