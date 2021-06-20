@@ -4,7 +4,6 @@ TARGET		= galasm
 OBJS		= galasm.o support.o jedec.o localize.o
 
 CFLAGS		= -Wall -O2
-CPPFLAGS	= -Iinclude -I.
 LDFLAGS		=
 
 
