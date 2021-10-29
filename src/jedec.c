@@ -235,68 +235,68 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
     buff2 = buff;
 
     if (!cfg->JedecFuseChk)
-        if (AddString(&buff, (UBYTE *)"\2\n"))          /* <STX> */
+        if (AddString(&buff, (UBYTE *)"\2\r\n"))          /* <STX> */
             return(-1);
 
 	/*** make header of JEDEC file ***/
-    if (AddString(&buff, (UBYTE *)"Used Program:   GALasm 2.1\n"))
+    if (AddString(&buff, (UBYTE *)"Used Program:   GALasm 2.1\r\n"))
         return(-1);
 
-    if (AddString(&buff, (UBYTE *)"GAL-Assembler:  GALasm 2.1\n"))
+    if (AddString(&buff, (UBYTE *)"GAL-Assembler:  GALasm 2.1\r\n"))
         return(-1);
 
     if (galtype == GAL16V8)
     {
-        if (AddString(&buff, (UBYTE *)"Device:         GAL16V8\n\n"))
+        if (AddString(&buff, (UBYTE *)"Device:         GAL16V8\r\n\r\n"))
             return(-1);
     }
 
     if (galtype == GAL20V8)
     {
-        if (AddString(&buff, (UBYTE *)"Device:         GAL20V8\n\n"))
+        if (AddString(&buff, (UBYTE *)"Device:         GAL20V8\r\n\r\n"))
             return(-1);
     }
 
     if (galtype == GAL20RA10)
     {
-        if (AddString(&buff, (UBYTE *)"Device:         GAL20RA10\n\n"))
+        if (AddString(&buff, (UBYTE *)"Device:         GAL20RA10\r\n\r\n"))
             return(-1);
     }
 
     if (galtype == GAL22V10)
     {
-        if (AddString(&buff, (UBYTE *)"Device:         GAL22V10\n\n"))
+        if (AddString(&buff, (UBYTE *)"Device:         GAL22V10\r\n\r\n"))
             return(-1);
     }
 
 
-    if (AddString(&buff, (UBYTE *)"*F0\n"))     /* default value of fuses */
+    if (AddString(&buff, (UBYTE *)"*F0\r\n"))     /* default value of fuses */
         return(-1);
 
     if (cfg->JedecSecBit)
     {   /* Security-Bit */
-        if (AddString(&buff, (UBYTE *)"*G1\n"))
+        if (AddString(&buff, (UBYTE *)"*G1\r\n"))
             return(-1);
     }
     else
-        if (AddString(&buff, (UBYTE *)"*G0\n"))
+        if (AddString(&buff, (UBYTE *)"*G0\r\n"))
             return(-1);
 
 
     if (galtype == GAL16V8)                       /* number of fuses */
-        if (AddString(&buff, (UBYTE *)"*QF2194\n"))
+        if (AddString(&buff, (UBYTE *)"*QF2194\r\n"))
             return(-1);
 
     if (galtype == GAL20V8)
-        if (AddString(&buff, (UBYTE *)"*QF2706\n"))
+        if (AddString(&buff, (UBYTE *)"*QF2706\r\n"))
             return(-1);
       
     if (galtype == GAL20RA10)
-        if (AddString(&buff, (UBYTE *)"*QF3274\n"))
+        if (AddString(&buff, (UBYTE *)"*QF3274\r\n"))
             return(-1);
 
     if (galtype == GAL22V10)
-        if (AddString(&buff, (UBYTE *)"*QF5892\n"))
+        if (AddString(&buff, (UBYTE *)"*QF5892\r\n"))
             return(-1);
 
 	/*** make fuse-matrix ***/
@@ -334,7 +334,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
                 bitnum++;
             }
 
-            if (AddByte(&buff, (UBYTE)'\n'))
+            if (AddString(&buff, (UBYTE *)"\r\n"))
                 return(-1);
         }
         else
@@ -363,7 +363,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
         }
     }
 
-    if (AddByte(&buff, (UBYTE)'\n'))
+    if (AddString(&buff, (UBYTE *)"\r\n"))
         return(-1);
 
 
@@ -380,7 +380,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
         bitnum++;
     }
 
-    if (AddByte(&buff, (UBYTE)'\n'))
+    if (AddString(&buff, (UBYTE *)"\r\n"))
         return(-1);
 
 
@@ -399,7 +399,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
             bitnum++;
         }
 
-        if (AddByte(&buff, (UBYTE)'\n'))
+	if (AddString(&buff, (UBYTE *)"\r\n"))
             return(-1);
 
 
@@ -415,7 +415,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
             bitnum++;
         }
 
-        if (AddByte(&buff, (UBYTE)'\n'))
+	if (AddString(&buff, (UBYTE *)"\r\n"))
             return(-1);
 
 
@@ -428,7 +428,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
         if (AddByte(&buff, (UBYTE)(Jedec.GALSYN + '0')))
             return(-1);
 
-        if (AddByte(&buff, (UBYTE)'\n'))
+	if (AddString(&buff, (UBYTE *)"\r\n"))
             return(-1);
 
         bitnum++;
@@ -443,7 +443,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
         if (AddByte(&buff, (UBYTE)(Jedec.GALAC0 + '0')))
             return(-1);
 
-        if (AddByte(&buff, (UBYTE)'\n'))
+	if (AddString(&buff, (UBYTE *)"\r\n"))
             return(-1);
 
     }
@@ -452,14 +452,14 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
 
 /*  if (cfg->JedecFuseChk)
     {*/                                   /* add fuse-checksum */
-        sprintf((char *)&mystrng[0], "*C%04x\n", FuseChecksum(galtype));
+        sprintf((char *)&mystrng[0], "*C%04x\r\n", FuseChecksum(galtype));
 
         if (AddString(&buff, (UBYTE *)&mystrng[0]))
             return(-1);
 /*    }*/
 
 
-    if (AddString(&buff, (UBYTE *)"*\n"))                 /* closing '*' */
+    if (AddString(&buff, (UBYTE *)"*\r\n"))                 /* closing '*' */
         return(-1);
 
 
@@ -468,7 +468,7 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
         if (AddByte(&buff, (UBYTE)0x3))                     /* <ETX> */
             return(-1);
 
-        sprintf((char *)&mystrng[0], "%04x\n", FileChecksum(buff2));
+        sprintf((char *)&mystrng[0], "%04x\r\n", FileChecksum(buff2));
 
         if (AddString(&buff, (UBYTE *)&mystrng[0]))
             return(-1);
@@ -567,19 +567,17 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
  * My GAL programmer (Wellon VP-190) doesn't like JEDEC files
  * with bare newlines in them.
  */
+
+/*
+ * Alexios Chouchoulas <alexios@bedroomlan.org> - 29-Oct-2021 However,
+ * this breaks file checksums, so I changed '\n' to "\r\n" in strings
+ * instead and now file checksums verify correctly. On the upside,
+ * this function now basically reduces to a single fwrite().
+ */
+
 static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
 {
 	unsigned char *buf = (unsigned char *) buf_;
-	size_t i;
 
-	for (i = 0; i < size*nmemb; i++) {
-		unsigned char byte = buf[i];
-		if (byte == '\n') {
-			fwrite("\r\n", 1, 2, out);
-		} else {
-			fwrite(&byte, 1, 1, out);
-		}
-	}
-
-	return nmemb;
+	return fwrite(buf, size, nmemb, out);
 }
