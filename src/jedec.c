@@ -10,45 +10,66 @@
 
 #include "galasm.h"
 #include <stdlib.h>
+#include <string.h>
 
-static size_t WriteOutput(void *buf, size_t size, size_t nmemb, FILE *out);
+static size_t WriteOutputWithCRLFLineEndings(void *buf, size_t size, size_t nmemb, FILE *out);
+static size_t WriteOutputWithNativeLineEndings(void *buf, size_t size, size_t nmemb, FILE *out);
 
 /******************************************************************************
 ** FileChecksum()
 *******************************************************************************
-** input:   buff    ActBuffer structure of file buffer
+** input:   filename    Filename for which to calculate checksum
+**          pchecksum   Pointer to receive the 16 bit checksum
 **
-** output:          16 bit checksum of the JEDEC structure
+** output:              TRUE or FALSE to indicate success
 **
 ** remarks: This function calculates the JEDEC file checksum. The start and
 **          the end of the area for which the checksum should be calculated
 **          must be marked by <STX> and <ETX>!.
 ******************************************************************************/
 
-int FileChecksum(struct ActBuffer buff)
+int FileChecksum(char *filename, unsigned *pchecksum)
 {
-    int checksum;
+    FILE *fp;
+    int c;
 
+    *pchecksum = 0;
 
-    checksum = 0;
+    if ((fp = fopen(filename, "rb")))
+    {
+        while ((c = fgetc(fp)) != 0x2)
+        {
+            if (c == EOF)
+            {
+                fclose(fp);
+                return FALSE;
+            }
+        }
 
-    while (*buff.Entry != 0x2)                  /* search for <STX> */
-        IncPointer(&buff);
+        while (TRUE)
+        {
+            *pchecksum = (*pchecksum + (UBYTE) c) % 0x10000;
 
-    while (*buff.Entry != 0x3)
-    {                                           /* search for <ETX> and */
-        checksum += *buff.Entry;                /* add values           */
+            if (c == 0x3)
+            {
+                break;
+            }
 
-        IncPointer(&buff);
+            c = fgetc(fp);
+            if (c == EOF)
+            {
+                fclose(fp);
+                return FALSE;
+            }
+        }
+        fclose(fp);
+        return TRUE;
     }
-
-    checksum += 0x3;                              /* add <ETX> too */
-
-    return(checksum);                             /* ready */
+    else
+    {
+        return FALSE;
+    }
 }
-
-
-
 
 
 /******************************************************************************
@@ -62,10 +83,12 @@ int FileChecksum(struct ActBuffer buff)
 **          structure.
 ******************************************************************************/
 
-int FuseChecksum(int galtype)
+unsigned FuseChecksum(int galtype)
 {
-    int     checksum, byte, n;
-    BYTE    *ptr, *ptrXOR, *ptrS1;
+    int      n;
+    unsigned checksum;
+    UBYTE    byte;
+    BYTE     *ptr, *ptrXOR, *ptrS1;
 
 
 
@@ -73,7 +96,9 @@ int FuseChecksum(int galtype)
     ptrXOR = &Jedec.GALXOR[0];
     ptrS1  = &Jedec.GALS1[0];
 
-    n = checksum = byte = 0;
+    n        = 0;
+    checksum = 0;
+    byte     = 0;
 
     for (;;)
     {
@@ -166,14 +191,14 @@ int FuseChecksum(int galtype)
 
         if (!((n + 9)%8))
         {
-            checksum += byte;
+            checksum = (checksum + byte) % 0x10000;
             byte = 0;
         }
 
         n++;
     }
 
-    checksum += byte;
+    checksum = (checksum + byte) % 0x10000;
 
     return(checksum);
 }
@@ -198,7 +223,6 @@ int FuseChecksum(int galtype)
 int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
 {
     UBYTE   mystrng[16];
-    struct  ActBuffer buff2;
     int     n, m, bitnum, bitnum2, flag;
     int     MaxFuseAdr = 0, RowSize = 0, XORSize = 0;
 
@@ -230,9 +254,6 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
                  break;
     }
 
-
-
-    buff2 = buff;
 
     if (!cfg->JedecFuseChk)
         if (AddString(&buff, (UBYTE *)"\2\n"))          /* <STX> */
@@ -467,11 +488,6 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
     {
         if (AddByte(&buff, (UBYTE)0x3))                     /* <ETX> */
             return(-1);
-
-        sprintf((char *)&mystrng[0], "%04x\n", FileChecksum(buff2));
-
-        if (AddString(&buff, (UBYTE *)&mystrng[0]))
-            return(-1);
     }
 
 
@@ -496,7 +512,27 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
     struct  Buffer          *first_buff;
     UBYTE   *filebuffer, *filebuffer2;
     long    result;
+    unsigned checksum;
 	FILE *fp;
+    char   mystring[16];
+    size_t (*write)(void *buf, size_t size, size_t nmemb, FILE *out);
+    char   *write_mode;
+    char   *append_mode;
+
+
+    if (cfg->ForceCRLF)
+    {
+        write = &WriteOutputWithCRLFLineEndings;
+        write_mode = "wb";
+        append_mode = "ab";
+    }
+    else
+    {
+        write = &WriteOutputWithNativeLineEndings;
+        write_mode = "w";
+        append_mode = "a";
+    }
+
 
 	if(!(first_buff = (struct Buffer *) calloc(sizeof(struct Buffer),1)))
     {
@@ -517,7 +553,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
         return;
     }
 
-    if ((fp = fopen(filename, "w")))
+    if ((fp = fopen(filename, write_mode)))
     {
         for (;;)
         {
@@ -531,7 +567,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
             }
                                                 /* save buffer */
 			/* DHH - 24-Oct-2012: ensure lines are terminated with CRLF */
-			result = WriteOutput(filebuffer,(size_t) 1, (size_t) (filebuffer2 - filebuffer),fp);
+			result = write(filebuffer,(size_t) 1, (size_t) (filebuffer2 - filebuffer),fp);
 
             if (result != (filebuffer2 - filebuffer))
             {                                   /* write error? */
@@ -550,6 +586,32 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
         }
 
         fclose(fp);
+
+        if (!cfg->JedecFuseChk)
+        {
+            if (FileChecksum(filename, &checksum))
+            {
+                if ((fp = fopen(filename, append_mode)))
+                {
+
+                    sprintf(mystring, "%04x\n", checksum);
+                    write(mystring, (size_t) 1, strlen(mystring), fp);
+                    fclose(fp);
+                }
+                else
+                {
+                    FreeBuffer(first_buff);
+                    ErrorReq(13);
+                    return;
+                }
+            }
+            else
+            {
+                FreeBuffer(first_buff);
+                ErrorReq(13);
+                return;
+            }
+        }
     }
     else
     {
@@ -567,7 +629,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
  * My GAL programmer (Wellon VP-190) doesn't like JEDEC files
  * with bare newlines in them.
  */
-static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
+static size_t WriteOutputWithCRLFLineEndings(void *buf_, size_t size, size_t nmemb, FILE *out)
 {
 	unsigned char *buf = (unsigned char *) buf_;
 	size_t i;
@@ -582,4 +644,10 @@ static size_t WriteOutput(void *buf_, size_t size, size_t nmemb, FILE *out)
 	}
 
 	return nmemb;
+}
+
+
+static size_t WriteOutputWithNativeLineEndings(void *buf_, size_t size, size_t nmemb, FILE *out)
+{
+    return fwrite(buf_, size, nmemb, out);
 }
