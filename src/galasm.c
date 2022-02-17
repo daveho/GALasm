@@ -543,7 +543,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                                       /* then use automatically mode 2      */
                     for (n = 0; n < 8; n++)
                     {
-                        if (OLMC[n].PinType == INPUT)
+                        if (OLMC[n].PinType == INPUT || (OLMC[n].PinType == COM_TRI_OUT && OLMC[n].FeedBack))
                         {
                             if (gal_type == GAL16V8)
                             {
@@ -574,18 +574,6 @@ int AssemblePldFile(char *file, struct Config *cfg)
                                     break;
                                 }
                             }
-                        }
-
-                        /* output and feedback? then mode 2 */
-
-                        if (OLMC[n].PinType == COM_TRI_OUT && OLMC[n].FeedBack)
-                        {
-                            modus = MODE2;      /* mode 2 */
-
-                            Jedec.GALSYN = 1;   /* set SYN,  AC0 bit */
-                            Jedec.GALAC0 = 1;
-
-                            break;
                         }
                     }
                 }
