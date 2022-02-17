@@ -166,6 +166,7 @@ struct  Config
     BOOL JedecSecBit;      /* set security bit in JEDEC? */
     BOOL JedecFuseChk;     /* calc. fuse checksum?       */ /* azummo: if false, file checksum will be generated */
     BOOL ForceCRLF;        /* windows line endings?      */
+    BOOL Verbose;          /* verbose output */
 };
 
 

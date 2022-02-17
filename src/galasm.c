@@ -510,6 +510,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                 {
                     if (OLMC[n].PinType == REGOUT) /* is there a registered  */
                     {                              /* OLMC?, then GAL's mode */
+                        if (cfg->Verbose) {
+                            printf("OLMC[%d] is configured as registered output, using registered mode (3)\n", n);
+                        }
                         modus = MODE3;             /* is mode 3              */
 
                         Jedec.GALSYN = 0;      /* set SYN and AC0 for mode 3 */
@@ -526,6 +529,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         if (OLMC[n].PinType == TRIOUT) /* is there a tristate */
                         {                              /* OLMC?, then GAL's   */
+                            if (cfg->Verbose) {
+                                printf("OLMC[%d] is configured as tri-state output, using complex mode (2)\n", n);
+                            }
                             modus = MODE2;             /* mode is mode 2      */
 
                             Jedec.GALSYN = 1;      /* set SYN, AC0 for mode 2 */
@@ -551,6 +557,11 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                                 if (pin_num == 15 || pin_num == 16)
                                 {
+			            if (cfg->Verbose) {
+                                        printf("Pin %d is configured as %s, using complex mode (2)\n",
+                                                pin_num,
+                                                OLMC[n].PinType == INPUT ? "input" : "output with feedback");
+                                    }
                                     modus = MODE2;      /* mode 2 */
 
                                     Jedec.GALSYN = 1;   /* set SYN, AC0 bit */
@@ -566,6 +577,11 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                                 if (pin_num == 18 || pin_num == 19)
                                 {
+			            if (cfg->Verbose) {
+                                        printf("Pin %d is configured as %s, using complex mode (2)\n",
+                                                pin_num,
+                                                OLMC[n].PinType == INPUT ? "input" : "output with feedback");
+                                    }
                                     modus = MODE2;      /* mode 2 */
 
                                     Jedec.GALSYN = 1;   /* set SYN, AC0 bit */
@@ -580,6 +596,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                 if (!modus)             /* if there is still no mode */
                 {                       /* defined, use mode 1 */
+	            if (cfg->Verbose) {
+                        printf("Defaulting to simple mode (1)\n");
+                    }
                     modus = MODE1;
 
                     Jedec.GALSYN = 1;       /* set SYN and AC0 bit */
@@ -2311,6 +2330,7 @@ int main(int argc, char *argv[])
 	cfg.JedecSecBit 	= FALSE;
 	cfg.JedecFuseChk 	= FALSE;
 	cfg.ForceCRLF		= FALSE;
+	cfg.Verbose		= FALSE;
 
 	p = argv[1];
 
@@ -2352,17 +2372,22 @@ int main(int argc, char *argv[])
 			case 'W':
 				cfg.ForceCRLF = TRUE;
 			break;
+			case 'v':
+			case 'V':
+				cfg.Verbose = TRUE;
+				break;
 
 			case 'h':
 			case 'H':
 			case '?':
-				printf("Usage:\nGALasm [-scfpaw] <filename>\n");
+				printf("Usage:\nGALasm [-scfpawv] <filename>\n");
 				printf(	"-s Enable security fuse\n"
 						"-c Do not create the .chp file\n"
 						"-f Do not create the .fus file\n"
 						"-p Do not create the .pin file\n"
 						"-a Restrict checksum to the fuse array only\n"
-						"-w Force <CR><LF> line endings for .jed file overriding platform default\n");
+						"-w Force <CR><LF> line endings for .jed file overriding platform default\n"
+						"-v Verbose output\n");
 				return(0);
 
       		case '-': 
