@@ -2220,8 +2220,7 @@ void WriteFuseFile(char *filename, int gal_type)
                     else
                         if (gal_type == GAL22V10)
                             fprintf(fp, "S0 = %1d   S1 = %1d",
-                                    Jedec.GALXOR[23 - pin],
-                                    Jedec.GALAC1[23 - pin]);
+                                    Jedec.GALXOR[23 - pin], Jedec.GALS1[23 - pin]);
                         else
                             if (gal_type == GAL20RA10)
                                 fprintf(fp, "S0 = %1d",
