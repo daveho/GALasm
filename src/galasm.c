@@ -2321,6 +2321,7 @@ void AsmError(int errornum, int pinnum)
 ** -p Disable .pin file output
 ** -a Restrict checksum to the fuse array only
 ** -w Force <CR><LF> line endings for .jed file overriding platform default
+** -v Verbose output
 **
 **
 ** 
