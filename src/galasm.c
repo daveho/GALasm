@@ -161,6 +161,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
     int     suffix, start_row, max_row, num_of_olmcs;
 	int		gal_type;
 	int		num_of_pins;
+	int		olmc_1st_pin;
 	int  	num_of_col,fsize;
 
         {
@@ -206,6 +207,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         num_of_olmcs = 8;                  /* number of OLMCs */
                         num_of_pins  = 20;                 /* number of pins  */
+                        olmc_1st_pin = 12;                 /* 1st OLMC pin    */
                         num_of_col   = MAX_FUSE_ADR16 + 1; /* number of col.  */
                         gal_type     = GAL16V8;
 
@@ -222,6 +224,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         num_of_olmcs = 8;                 /* num of OLMCs */
                         num_of_pins  = 24;                /* num of pins  */
+                        olmc_1st_pin = 15;                /* 1st OLMC pin */
                         num_of_col   = MAX_FUSE_ADR20 + 1;/* num of col   */
                         gal_type     = GAL20V8;
 
@@ -238,6 +241,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         num_of_olmcs = 10;
                         num_of_pins  = 24;
+                        olmc_1st_pin = 14;
                         num_of_col   = MAX_FUSE_ADR20RA10 + 1;
                         gal_type     = GAL20RA10;
 
@@ -254,6 +258,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         num_of_olmcs = 10;
                         num_of_pins  = 24;
+                        olmc_1st_pin = 14;
                         num_of_col   = MAX_FUSE_ADR22V10 + 1;
                         gal_type     = GAL22V10;
 
@@ -510,15 +515,22 @@ int AssemblePldFile(char *file, struct Config *cfg)
                 {
                     if (OLMC[n].PinType == REGOUT) /* is there a registered  */
                     {                              /* OLMC?, then GAL's mode */
-                        if (cfg->Verbose) {
-                            printf("OLMC[%d] is configured as registered output, using registered mode (3)\n", n);
+                                                   /* is mode 3              */
+                        if (!modus)
+                        {
+                            modus = MODE3;
+                            Jedec.GALSYN = 0;      /* set SYN and AC0 for mode 3 */
+                            Jedec.GALAC0 = 1;
+
+                            if (cfg->Verbose)
+                                printf("Using %s mode because:\n", GetModeName(modus));
                         }
-                        modus = MODE3;             /* is mode 3              */
 
-                        Jedec.GALSYN = 0;      /* set SYN and AC0 for mode 3 */
-                        Jedec.GALAC0 = 1;
+                        pin_num = n + olmc_1st_pin;
 
-                        break;
+                        if (cfg->Verbose)
+                            printf("  pin %d (%s) is configured as registered output\n",
+                                   pin_num, GetPinName(pinnames, pin_num));
                     }
                 }
 
@@ -529,15 +541,23 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         if (OLMC[n].PinType == TRIOUT) /* is there a tristate */
                         {                              /* OLMC?, then GAL's   */
-                            if (cfg->Verbose) {
-                                printf("OLMC[%d] is configured as tri-state output, using complex mode (2)\n", n);
+                                                       /* mode is mode 2      */
+                            if (!modus)
+                            {
+                                modus = MODE2;
+                                Jedec.GALSYN = 1;      /* set SYN, AC0 for mode 2 */
+                                Jedec.GALAC0 = 1;
+
+                                if (cfg->Verbose)
+                                    printf("Using %s mode because:\n", GetModeName(modus));
                             }
-                            modus = MODE2;             /* mode is mode 2      */
 
-                            Jedec.GALSYN = 1;      /* set SYN, AC0 for mode 2 */
-                            Jedec.GALAC0 = 1;
+                            pin_num = n + olmc_1st_pin;
 
-                            break;
+                            if (cfg->Verbose) {
+                                printf("  pin %d (%s) is configured as tri-state output\n",
+                                       pin_num, GetPinName(pinnames, pin_num));
+                            }
                         }
                     }
                 }
@@ -551,44 +571,26 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     {
                         if (OLMC[n].PinType == INPUT || (OLMC[n].PinType == COM_TRI_OUT && OLMC[n].FeedBack))
                         {
-                            if (gal_type == GAL16V8)
-                            {
-                                pin_num = n + 12;
+                            pin_num = n + olmc_1st_pin;
 
-                                if (pin_num == 15 || pin_num == 16)
+                            if ((gal_type == GAL16V8 && (pin_num == 15 || pin_num == 16)) ||
+                                (gal_type == GAL20V8 && (pin_num == 18 || pin_num == 19)))
+                            {
+                                if (!modus)
                                 {
-			            if (cfg->Verbose) {
-                                        printf("Pin %d is configured as %s, using complex mode (2)\n",
-                                                pin_num,
-                                                OLMC[n].PinType == INPUT ? "input" : "output with feedback");
-                                    }
                                     modus = MODE2;      /* mode 2 */
 
                                     Jedec.GALSYN = 1;   /* set SYN, AC0 bit */
                                     Jedec.GALAC0 = 1;
 
-                                    break;
+                                    if (cfg->Verbose)
+                                        printf("Using %s mode because:\n", GetModeName(modus));
                                 }
-                            }
 
-                            if (gal_type == GAL20V8)
-                            {
-                                pin_num = n + 15;
-
-                                if (pin_num == 18 || pin_num == 19)
-                                {
-			            if (cfg->Verbose) {
-                                        printf("Pin %d is configured as %s, using complex mode (2)\n",
-                                                pin_num,
-                                                OLMC[n].PinType == INPUT ? "input" : "output with feedback");
-                                    }
-                                    modus = MODE2;      /* mode 2 */
-
-                                    Jedec.GALSYN = 1;   /* set SYN, AC0 bit */
-                                    Jedec.GALAC0 = 1;
-
-                                    break;
-                                }
+			        if (cfg->Verbose)
+                                    printf("  pin %d (%s) is configured as %s\n", pin_num,
+                                           GetPinName(pinnames, pin_num),
+                                           OLMC[n].PinType == INPUT ? "input" : "output with feedback");
                             }
                         }
                     }
@@ -596,13 +598,14 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                 if (!modus)             /* if there is still no mode */
                 {                       /* defined, use mode 1 */
-	            if (cfg->Verbose) {
-                        printf("Defaulting to simple mode (1)\n");
-                    }
                     modus = MODE1;
 
                     Jedec.GALSYN = 1;       /* set SYN and AC0 bit */
                     Jedec.GALAC0 = 0;
+
+	            if (cfg->Verbose) {
+                        printf("Defaulting to %s mode\n", GetModeName(modus));
+                    }
                 }
 
 
@@ -697,7 +700,14 @@ int AssemblePldFile(char *file, struct Config *cfg)
         }
 
 	if(pass)
-		printf("GAL %s; Operation mode %d; Security fuse %s\n", GetGALName(gal_type), modus, cfg->JedecSecBit ? "on" : "off");
+	{
+		printf("GAL%s", GetGALName(gal_type));
+
+		if (gal_type == GAL16V8 || gal_type == GAL20V8)
+			printf("; Operation mode: %s", GetModeName(modus));
+
+		printf("; Security fuse %s\n", cfg->JedecSecBit ? "on" : "off");
+	}
 
         actptr  = bool_start;
         linenum = bool_linenum;
