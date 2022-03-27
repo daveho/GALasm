@@ -304,6 +304,43 @@ char *GetGALName(int galtype)
 }
 
 /******************************************************************************
+** GetPinName()
+*******************************************************************************
+** input:   *pinnames  pointer to the pinnames array
+**          pinnum     the number of the pin
+**
+** output:  pointer to a string with the pin name
+**
+******************************************************************************/
+
+char *GetPinName(UBYTE *pinnames, int pinnum)
+{
+	return (char*) (pinnames + (pinnum - 1) * 10);
+}
+
+/******************************************************************************
+** GetModeName()
+*******************************************************************************
+** input:   mode
+**
+** output:  pointer to a string with the mode name
+**
+******************************************************************************/
+
+char *GetModeName(int mode)
+{
+	switch(mode)
+	{
+		case MODE1:	return("simple");
+		case MODE2:	return("complex");
+		case MODE3:	return("registered");
+
+		default:
+				return "UNKNOWN";
+	}
+}
+
+/******************************************************************************
 ** errorReq()
 *******************************************************************************
 ** input:   error number

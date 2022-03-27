@@ -261,6 +261,8 @@ void  IncPointer(struct ActBuffer *buff);
 void  DecPointer(struct ActBuffer *buff);
 void  FreeBuffer(struct Buffer *buff);
 char *GetGALName(int galtype);
+char *GetPinName(UBYTE *pinnames, int pinnum);
+char *GetModeName(int mode);
 void  ErrorReq(int errornum);
 
 /* Jedec.c */
