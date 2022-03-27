@@ -2428,7 +2428,7 @@ int main(int argc, char *argv[])
   	if(argc != 2) 
 	{
 		usage:
-			printf("Usage:\nGALasm [-scfpaw] <filename>\n");
+			printf("Usage:\nGALasm [-scfpawv] <filename>\n");
 			printf("Type GALasm -h for help\n");
 		return(5);
   	}
