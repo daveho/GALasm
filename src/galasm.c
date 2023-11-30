@@ -1598,9 +1598,9 @@ void SetAND(int row, int pinnum, int negation, int gal_type)
         case GAL22V10:
             column  =  PinToFuse22V10[pinnum - 1];
 
-                                    /* is it a registered OLMC pin?   */
-                                    /* yes, then correct the negation */
-            if ((pinnum >= 14 && pinnum <= 23) && !Jedec.GALS1[23 - pinnum])
+                                    /* is it a registered OLMC pin that is active high? */
+                                    /* Yes, then correct the negation                   */
+            if ((pinnum >= 14 && pinnum <= 23) && !Jedec.GALS1[23 - pinnum] && Jedec.GALXOR[23 - pinnum])
             {
                 negation = negation ? 0 : 1;
             }
