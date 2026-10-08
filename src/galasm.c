@@ -348,7 +348,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                 else
                     max_chr = 9;
 
-                if (!(isalpha(chr) || isdigit(chr) || IsNEG(chr)))
+                if (!(IsPinChar(chr) || IsNEG(chr)))
                 {
                     AsmError(5, 0);             /* is character a legal */
                     return(-1);                 /* one?                 */
@@ -356,7 +356,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                 k = 0;
 
-                while (isalpha(chr) || isdigit(chr) || IsNEG(chr))
+                while (IsPinChar(chr) || IsNEG(chr))
                 {
                     if (IsNEG(chr) && k != 0)    /* check position of '/' */
                     {
@@ -368,7 +368,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                     actptr++;
 
-                    if (IsNEG(chr) && (!(isalpha(*actptr) || isdigit(*actptr))))
+                    if (IsNEG(chr) && !IsPinChar(*actptr))
                     {
                         AsmError(3, 0);
                         return(-1);
@@ -1656,7 +1656,7 @@ void IsPinName(UBYTE *pinnames, int numofpins)
 
     oldactptr = actptr;
 
-    while (isalpha(*actptr) || isdigit(*actptr))
+    while (IsPinChar(*actptr))
     {
         actptr++;
         n++;
@@ -1720,7 +1720,7 @@ void Is_AR_SP(UBYTE *ptr)
 
     oldptr = ptr;
 
-    while (isalpha(*ptr) || isdigit(*ptr))
+    while (IsPinChar(*ptr))
     {
         ptr++;
         n++;
@@ -1862,6 +1862,29 @@ int IsOR(char chr)
 int IsAND(char chr)
 {
     if (chr == '*' || chr == '&')
+        return(1);
+    else
+        return(0);
+}
+
+
+
+
+
+/******************************************************************************
+** IsPinChar()
+*******************************************************************************
+** input:   chr    character to test
+**
+** output:  1: chr may appear in a pin name
+**          0: chr may not appear in a pin name
+**
+** remarks: pin names may contain letters, digits and '_' (e.g. /ROM_EN)
+******************************************************************************/
+
+int IsPinChar(UBYTE chr)
+{
+    if (isalpha(chr) || isdigit(chr) || chr == '_')
         return(1);
     else
         return(0);

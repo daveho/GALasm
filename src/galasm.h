@@ -248,6 +248,7 @@ void  WriteRow(FILE *fp, int row, int num_of_col);
 int   IsOR(char);
 int   IsAND(char);
 int   IsNEG(char);
+int   IsPinChar(UBYTE);
 void  Is_AR_SP(UBYTE *ptr);
 
 

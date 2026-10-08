@@ -1,0 +1,5 @@
+{
+  "description": "Undeclared pin name beginning with AR_ is not taken for AR",
+  "expect": "error",
+  "error_line": 6
+}
