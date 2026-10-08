@@ -31,3 +31,5 @@ jobs:
       run: cd src && make
     - name: conformance tests
       run: cd src && make check PYTHON=${{ matrix.python }}
+    - name: makefile tests
+      run: ${{ matrix.python }} tests/test_makefile.py

@@ -21,6 +21,14 @@ python3 tests/run_tests.py -k 22v10 -v       # only cases whose name contains "2
 
 The runner exits with status 0 when every case passes.
 
+`test_makefile.py` separately checks `src/Makefile` (linking with `$(CC)`,
+`make clean`, and the `ARCHS` option for macOS universal binaries).  It
+builds in a temporary copy of `src/`:
+
+```sh
+python3 tests/test_makefile.py
+```
+
 ## Case format
 
 Each directory in `cases/` is one case:
