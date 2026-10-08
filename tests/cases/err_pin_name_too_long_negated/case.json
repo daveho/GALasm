@@ -1,0 +1,5 @@
+{
+  "description": "A negated pin name with 9 characters after the negation sign",
+  "expect": "error",
+  "error_line": 3
+}

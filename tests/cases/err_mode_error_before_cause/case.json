@@ -1,0 +1,5 @@
+{
+  "description": "A mode error is reported at the offending term even when the mode is set by a later equation",
+  "expect": "error",
+  "error_line": 6
+}

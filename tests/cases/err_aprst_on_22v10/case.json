@@ -1,0 +1,5 @@
+{
+  "description": ".APRST on a GAL22V10",
+  "expect": "error",
+  "error_line": 7
+}

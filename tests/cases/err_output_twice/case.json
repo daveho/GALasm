@@ -1,0 +1,5 @@
+{
+  "description": "Two equations for the same output",
+  "expect": "error",
+  "error_line": 7
+}

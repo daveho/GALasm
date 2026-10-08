@@ -1,0 +1,4 @@
+{
+  "description": "The signature stops at a tab; spaces are part of it",
+  "expect": "success"
+}

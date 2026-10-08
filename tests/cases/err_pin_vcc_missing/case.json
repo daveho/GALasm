@@ -1,0 +1,5 @@
+{
+  "description": "Supply pin not named VCC",
+  "expect": "error",
+  "error_line": 4
+}

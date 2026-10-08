@@ -1,0 +1,17 @@
+GAL16V8
+SIMPLE1
+
+Clk  A    B    C    D    E    F    G    H    GND
+/OE  Y0   Y1   Y2   Y3   Y4   Y5   Y6   Y7   VCC
+
+; Simple mode: no registers, no tristate, no inputs on pins 15/16
+Y0 = A * B
+Y1 = A + B
+/Y2 = A & !B # !A & B
+Y3 = C * D * E * F * G * H * Clk * OE
+Y4 = A + B + C + D + E + F + G + H
+Y5 = GND
+Y6 = VCC
+
+DESCRIPTION
+Pin 11 is declared negated and used without the slash.  Y7 is never used.

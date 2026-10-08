@@ -1,0 +1,4 @@
+{
+  "description": "Negation in the pin declaration combines with negation in equations, on both sides",
+  "expect": "success"
+}

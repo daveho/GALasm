@@ -1,0 +1,5 @@
+{
+  "description": ".CLK on a GAL16V8",
+  "expect": "error",
+  "error_line": 6
+}

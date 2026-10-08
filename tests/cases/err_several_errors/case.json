@@ -1,0 +1,8 @@
+{
+  "description": "With several errors in a file, any one of them may be reported",
+  "expect": "error",
+  "error_line": [
+    6,
+    8
+  ]
+}

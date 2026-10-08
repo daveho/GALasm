@@ -1,0 +1,5 @@
+{
+  "description": "GAL16V8 registered mode: 9 product terms on a register",
+  "expect": "error",
+  "error_line": 6
+}

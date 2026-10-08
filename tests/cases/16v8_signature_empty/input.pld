@@ -1,0 +1,6 @@
+GAL16V8
+
+A B C D E F G H I GND
+J K L M N O P Q R VCC
+R = A * /B + C
+DESCRIPTION

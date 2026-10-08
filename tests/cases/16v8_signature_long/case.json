@@ -1,0 +1,4 @@
+{
+  "description": "Only the first 8 characters of line 2 form the signature",
+  "expect": "success"
+}

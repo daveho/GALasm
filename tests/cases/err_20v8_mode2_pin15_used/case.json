@@ -1,0 +1,5 @@
+{
+  "description": "GAL20V8 complex mode: pin 15 has no feedback",
+  "expect": "error",
+  "error_line": 6
+}

@@ -1,0 +1,158 @@
+
+
+AR
+  0  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+Pin 23 = O23          S0 = 1   S1 = 1
+  1  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+  2  x--- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+  3  ---- x--- ---- ---- ---- ---- ---- ---- ---- ---- ----
+  4  ---- ---- x--- ---- ---- ---- ---- ---- ---- ---- ----
+  5  ---- ---- ---- x--- ---- ---- ---- ---- ---- ---- ----
+  6  ---- ---- ---- ---- x--- ---- ---- ---- ---- ---- ----
+  7  ---- ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+  8  ---- ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+  9  ---- ---- ---- ---- ---- ---- ---- x--- ---- ---- ----
+
+Pin 22 = O22          S0 = 1   S1 = 1
+ 10  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 11  x--- ---- ---- ---- ---- ---- ---- --x- ---- ---- ----
+ 12  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 13  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 14  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 15  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 16  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 17  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 18  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 19  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 20  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 21 = O21          S0 = 1   S1 = 1
+ 21  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 22  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 23  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 24  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 25  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 26  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 27  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 28  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 29  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 30  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 31  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 32  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 33  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 20 = O20          S0 = 1   S1 = 1
+ 34  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 35  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 36  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 37  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 38  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 39  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 40  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 41  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 42  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 43  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 44  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 45  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 46  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 47  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 48  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 19 = O19          S0 = 0   S1 = 1
+ 49  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 50  x--- x--- x--- x--- x--- x--- x--- x--- x--- x--- x-x-
+ 51  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 52  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 53  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 54  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 55  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 56  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 57  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 58  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 59  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 60  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 61  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 62  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 63  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 64  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 65  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 18 = O18          S0 = 1   S1 = 1
+ 66  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 67  x--- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 68  ---- x--- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 69  ---- ---- x--- ---- ---- ---- ---- ---- ---- ---- ----
+ 70  ---- ---- ---- x--- ---- ---- ---- ---- ---- ---- ----
+ 71  ---- ---- ---- ---- x--- ---- ---- ---- ---- ---- ----
+ 72  ---- ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+ 73  ---- ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+ 74  ---- ---- ---- ---- ---- ---- ---- x--- ---- ---- ----
+ 75  ---- ---- ---- ---- ---- ---- ---- ---- x--- ---- ----
+ 76  ---- ---- ---- ---- ---- ---- ---- ---- ---- x--- ----
+ 77  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- x---
+ 78  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- --x-
+ 79  -x-- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 80  ---- -x-- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 81  ---- ---- -x-- ---- ---- ---- ---- ---- ---- ---- ----
+ 82  ---- ---- ---- -x-- ---- ---- ---- ---- ---- ---- ----
+
+Pin 17 = O17          S0 = 1   S1 = 1
+ 83  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 84  ---x ---- ---- ---- ---- --x- ---- ---- ---- ---- ----
+ 85  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 86  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 87  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 88  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 89  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 90  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 91  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 92  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 93  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 94  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 95  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 96  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 97  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 16 = O16          S0 = 0   S1 = 1
+ 98  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 99  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+100  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+101  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+102  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+103  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+104  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+105  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+106  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+107  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+108  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+109  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+110  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 15 = O15          S0 = 0   S1 = 0
+111  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+112  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+113  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+114  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+115  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+116  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+117  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+118  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+119  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+120  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+121  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 14 = O14          S0 = 1   S1 = 1
+122  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+123  x--- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+124  ---- x--- ---- ---- ---- ---- ---- ---- ---- ---- ----
+125  ---- ---- x--- ---- ---- ---- ---- ---- ---- ---- ----
+126  ---- ---- ---- x--- ---- ---- ---- ---- ---- ---- ----
+127  ---- ---- ---- ---- x--- ---- ---- ---- ---- ---- ----
+128  ---- ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+129  ---- ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+130  ---- ---- ---- ---- ---- ---- ---- x--- ---- ---- ----
+
+SP
+131  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+

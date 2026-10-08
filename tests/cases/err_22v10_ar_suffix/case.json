@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: suffix on AR",
+  "expect": "error",
+  "error_line": 6
+}

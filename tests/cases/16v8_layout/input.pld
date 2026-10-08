@@ -1,0 +1,19 @@
+GAL16V8   ; comment after the type
+Layout 1
+
+; the pin list may be split across lines and contain comments
+A B C D E     ; pins 1-5
+	F G H I GND
+J K L M N O P Q R
+VCC
+
+R =
+   A
+   *
+   B ; operands on separate lines
+   + C*D+E    ; no spaces around operators
+Q=F#G&H
+;  comment between equations
+
+DESCRIPTION
+Anything here is ignored: R = Z * NC

@@ -1,0 +1,13 @@
+{
+  "description": "GAL16V8 simple mode: every output at its maximum of 8 product terms",
+  "expect": "success",
+  "args": [
+    "-c",
+    "-f",
+    "-p",
+    "{input}"
+  ],
+  "outputs": [
+    "jed"
+  ]
+}

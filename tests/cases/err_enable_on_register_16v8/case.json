@@ -1,0 +1,5 @@
+{
+  "description": "GAL16V8: .E on a registered output",
+  "expect": "error",
+  "error_line": 7
+}

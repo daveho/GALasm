@@ -1,0 +1,5 @@
+{
+  "description": "Suffix longer than 6 letters",
+  "expect": "error",
+  "error_line": 6
+}

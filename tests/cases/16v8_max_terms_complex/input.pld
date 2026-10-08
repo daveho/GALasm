@@ -1,0 +1,14 @@
+GAL16V8
+LIMITS
+A B C D E F G H I GND
+J K L M N O P Q R VCC
+
+K.T = A + B + C + D + E + F + G
+L = A + B + C + D + E + F + G
+M = A + B + C + D + E + F + G
+N = A + B + C + D + E + F + G
+O = A + B + C + D + E + F + G
+P = A + B + C + D + E + F + G
+Q = A + B + C + D + E + F + G
+R = A + B + C + D + E + F + G
+DESCRIPTION

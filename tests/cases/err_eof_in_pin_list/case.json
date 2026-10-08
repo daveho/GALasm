@@ -1,0 +1,4 @@
+{
+  "description": "File ends inside the pin list",
+  "expect": "error"
+}

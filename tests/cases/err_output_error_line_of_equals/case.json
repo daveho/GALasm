@@ -1,0 +1,8 @@
+{
+  "description": "An error about an output definition may be reported at the output name or at the token after it",
+  "expect": "error",
+  "error_line": [
+    7,
+    9
+  ]
+}

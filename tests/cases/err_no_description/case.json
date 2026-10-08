@@ -1,0 +1,4 @@
+{
+  "description": "Missing DESCRIPTION keyword",
+  "expect": "error"
+}

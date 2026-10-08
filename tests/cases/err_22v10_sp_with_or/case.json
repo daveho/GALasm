@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: SP with more than one product term",
+  "expect": "error",
+  "error_line": 6
+}

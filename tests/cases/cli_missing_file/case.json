@@ -1,0 +1,7 @@
+{
+  "description": "A file that does not exist is an error",
+  "expect": "error",
+  "args": [
+    "missing.pld"
+  ]
+}

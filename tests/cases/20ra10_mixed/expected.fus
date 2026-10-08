@@ -1,0 +1,102 @@
+
+
+Pin 23 = I2           S0 = 0
+  0  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  1  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  2  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  3  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  4  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  5  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  6  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  7  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 22 = I1           S0 = 0
+  8  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+  9  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 10  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 11  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 12  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 13  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 14  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 15  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 21 = T1           S0 = 1
+ 16  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 17  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 18  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 19  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 20  ---- --x- ---- ---- ---- ---- ---- ---- ---- ----
+ 21  --x- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 22  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 23  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 20 = O3           S0 = 1
+ 24  ---- ---- ---- ---- ---- ---- ---- --x- ---- ----
+ 25  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 26  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 27  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 28  ---- ---- ---- ---- ---- ---- ---- ---- x--- ----
+ 29  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 30  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 31  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 19 = O2           S0 = 0
+ 32  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 33  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 34  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 35  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 36  ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+ 37  ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+ 38  ---- ---- ---- ---- ---- ---- x--- ---- ---- ----
+ 39  ---- ---- ---- ---- ---- ---- ---- x--- ---- ----
+
+Pin 18 = O1           S0 = 1
+ 40  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 41  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 42  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 43  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 44  ---- ---- x--- -x-- ---- ---- ---- ---- ---- ----
+ 45  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 46  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 47  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 17 = Q3           S0 = 1
+ 48  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 49  ---- x--- ---- ---- ---- ---- ---- ---- ---- ----
+ 50  ---- ---- ---- ---- ---- ---- ---- ---- --x- --x-
+ 51  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 52  ---- ---- x--- ---- ---- ---- ---- ---- ---- ----
+ 53  ---- ---- ---- x--- ---- ---- ---- ---- ---- ----
+ 54  ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+ 55  ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+
+Pin 16 = Q2           S0 = 0
+ 56  ---- ---- ---- ---- ---- ---- ---- ---- ---- x---
+ 57  ---- x--- ---- ---- ---- ---- ---- ---- -x-- ----
+ 58  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 59  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 60  ---- ---- ---- ---- ---- ---- ---- x--- ---- ----
+ 61  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 62  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 63  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 15 = Q1           S0 = 1
+ 64  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 65  x--- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 66  ---- ---- ---- ---- ---- x--- ---- ---- ---- ----
+ 67  ---- ---- ---- ---- ---- ---- x--- ---- ---- ----
+ 68  ---- ---- ---- ---- ---- ---- ---- ---- ---- --x-
+ 69  ---- ---- ---- ---- x--- ---- ---- ---- ---- ----
+ 70  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 71  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+
+Pin 14 = Q0           S0 = 1
+ 72  ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 73  x--- ---- ---- ---- ---- ---- ---- ---- ---- ----
+ 74  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 75  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 76  ---- ---- x--- x--- ---- ---- ---- ---- ---- ----
+ 77  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 78  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+ 79  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+

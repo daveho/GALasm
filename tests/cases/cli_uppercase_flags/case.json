@@ -1,0 +1,14 @@
+{
+  "description": "Option letters are case-insensitive",
+  "expect": "success",
+  "args": [
+    "-S",
+    "-C",
+    "{input}"
+  ],
+  "outputs": [
+    "jed",
+    "fus",
+    "pin"
+  ]
+}

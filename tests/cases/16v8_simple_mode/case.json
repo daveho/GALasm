@@ -1,0 +1,4 @@
+{
+  "description": "GAL16V8 simple mode: AND/OR, alternative operators, active-low output, 8 terms, GND/VCC, unused output",
+  "expect": "success"
+}

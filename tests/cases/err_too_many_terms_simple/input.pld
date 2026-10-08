@@ -1,0 +1,9 @@
+GAL16V8
+ERRTEST
+A B C D E F G H I GND
+J K L M N O P Q R VCC
+
+R = B + C + D + E
+  + F + G + H + I
+  + J
+DESCRIPTION

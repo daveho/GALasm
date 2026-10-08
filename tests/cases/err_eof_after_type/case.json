@@ -1,0 +1,4 @@
+{
+  "description": "File ends after the type line",
+  "expect": "error"
+}

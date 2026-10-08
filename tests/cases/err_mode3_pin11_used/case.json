@@ -1,0 +1,5 @@
+{
+  "description": "Registered mode: pin 11 is output enable",
+  "expect": "error",
+  "error_line": 6
+}

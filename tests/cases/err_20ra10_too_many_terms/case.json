@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: 5 product terms",
+  "expect": "error",
+  "error_line": 6
+}

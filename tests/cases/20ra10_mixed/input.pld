@@ -1,0 +1,22 @@
+GAL20RA10
+RA10
+/PL CK1 CK2 A B C D E F G H GND
+/OE Q0 Q1 Q2 Q3 O1 O2 O3 T1 I1 I2 VCC
+Q0.R = A * B
+Q0.CLK = CK1
+Q1.R = Q0 + C
+Q1.CLK = CK1
+Q1.ARST = D
+Q1.APRST = E
+/Q2.R = F
+Q2.CLK = CK2 * /G
+Q2.E = H
+Q3.R = A + B + C + D
+Q3.CLK = CK2
+Q3.ARST = Q0 * Q1
+O1 = A * /B
+/O2 = C + D + E + F
+O3.T = G
+O3.E = Q2
+T1 = I1 + I2
+DESCRIPTION

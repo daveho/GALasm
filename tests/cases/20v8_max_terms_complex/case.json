@@ -1,0 +1,13 @@
+{
+  "description": "GAL20V8 complex mode: every output at its maximum of 7 product terms",
+  "expect": "success",
+  "args": [
+    "-c",
+    "-f",
+    "-p",
+    "{input}"
+  ],
+  "outputs": [
+    "jed"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "description": "Pin name declared twice",
+  "expect": "error",
+  "error_line": 4
+}

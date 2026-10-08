@@ -1,0 +1,5 @@
+{
+  "description": "Unknown pin name on the left-hand side",
+  "expect": "error",
+  "error_line": 6
+}

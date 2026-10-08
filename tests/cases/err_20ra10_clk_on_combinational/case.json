@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: .CLK on a combinational output",
+  "expect": "error",
+  "error_line": 7
+}

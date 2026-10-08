@@ -1,0 +1,16 @@
+GAL22V10
+LIMITS
+A B C D E F G H I J K GND
+M N O P Q R S T U V W VCC
+
+N = A + B + C + D + E + F + G + H
+O = A + B + C + D + E + F + G + H + I + J
+P = A + B + C + D + E + F + G + H + I + J + K + M
+Q = A + B + C + D + E + F + G + H + I + J + K + M + /A + /B
+R = A + B + C + D + E + F + G + H + I + J + K + M + /A + /B + /C + /D
+S = A + B + C + D + E + F + G + H + I + J + K + M + /A + /B + /C + /D
+T = A + B + C + D + E + F + G + H + I + J + K + M + /A + /B
+U = A + B + C + D + E + F + G + H + I + J + K + M
+V = A + B + C + D + E + F + G + H + I + J
+W = A + B + C + D + E + F + G + H
+DESCRIPTION

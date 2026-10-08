@@ -1,0 +1,8 @@
+{
+  "description": "-a omits <STX>, <ETX> and the transmission checksum",
+  "expect": "success",
+  "args": [
+    "-a",
+    "{input}"
+  ]
+}

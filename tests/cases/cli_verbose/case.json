@@ -1,0 +1,8 @@
+{
+  "description": "-v is accepted and does not change the files",
+  "expect": "success",
+  "args": [
+    "-v",
+    "{input}"
+  ]
+}

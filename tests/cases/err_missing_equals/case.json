@@ -1,0 +1,5 @@
+{
+  "description": "'=' missing after the output",
+  "expect": "error",
+  "error_line": 6
+}

@@ -1,0 +1,5 @@
+{
+  "description": "A file name without extension gets the output extension appended",
+  "expect": "success",
+  "input": "design"
+}

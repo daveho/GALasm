@@ -1,0 +1,5 @@
+{
+  "description": "Input with extension inside a dotted directory",
+  "expect": "success",
+  "input": "dir.v2/design.pld"
+}

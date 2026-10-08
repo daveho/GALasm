@@ -1,0 +1,4 @@
+{
+  "description": "An empty line 2 gives an all-zero signature",
+  "expect": "success"
+}

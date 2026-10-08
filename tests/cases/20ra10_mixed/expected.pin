@@ -1,0 +1,29 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | /PL      | Input
+   2   | CK1      | Input
+   3   | CK2      | Input
+   4   | A        | Input
+   5   | B        | Input
+   6   | C        | Input
+   7   | D        | Input
+   8   | E        | Input
+   9   | F        | Input
+  10   | G        | Input
+  11   | H        | Input
+  12   | GND      | GND
+  13   | /OE      | Input
+  14   | Q0       | Output
+  15   | Q1       | Output
+  16   | Q2       | Output
+  17   | Q3       | Output
+  18   | O1       | Output
+  19   | O2       | Output
+  20   | O3       | Output
+  21   | T1       | Output
+  22   | I1       | Input
+  23   | I2       | Input
+  24   | VCC      | VCC
+

@@ -1,0 +1,5 @@
+{
+  "description": "NC used in an equation",
+  "expect": "error",
+  "error_line": 6
+}

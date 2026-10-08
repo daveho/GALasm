@@ -1,0 +1,4 @@
+{
+  "description": "For a pin declared negated, /R.E is accepted",
+  "expect": "success"
+}

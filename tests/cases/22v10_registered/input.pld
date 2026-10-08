@@ -1,0 +1,18 @@
+GAL22V10
+REG22
+CLK A B C D E F G H I J GND
+K Q0 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9 VCC
+Q0.R = A
+/Q1.R = B
+Q2.R = Q0 * Q1
+Q3.R = /Q0 + /Q1
+Q4.R = Q4 * /C + D * C
+Q5 = Q0 * /Q1
+Q6.T = Q2
+Q6.E = E
+Q7.R = F
+Q7.E = G
+Q8 = CLK * K
+AR = H * /I
+SP = J
+DESCRIPTION

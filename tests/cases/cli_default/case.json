@@ -1,0 +1,4 @@
+{
+  "description": "Default options produce all four files",
+  "expect": "success"
+}

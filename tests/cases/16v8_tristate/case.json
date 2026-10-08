@@ -1,0 +1,4 @@
+{
+  "description": "GAL16V8 complex mode: .T/.E outputs, enable from VCC/GND/product, .T without .E, plain output",
+  "expect": "success"
+}

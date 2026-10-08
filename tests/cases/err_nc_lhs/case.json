@@ -1,0 +1,5 @@
+{
+  "description": "NC used as an output",
+  "expect": "error",
+  "error_line": 6
+}

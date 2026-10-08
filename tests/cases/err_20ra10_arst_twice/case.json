@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: .ARST twice",
+  "expect": "error",
+  "error_line": 9
+}

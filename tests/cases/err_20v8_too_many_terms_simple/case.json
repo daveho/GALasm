@@ -1,0 +1,5 @@
+{
+  "description": "GAL20V8 simple mode: 9 product terms",
+  "expect": "error",
+  "error_line": 6
+}

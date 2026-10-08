@@ -1,0 +1,5 @@
+{
+  "description": "Illegal character in the pin list",
+  "expect": "error",
+  "error_line": 3
+}

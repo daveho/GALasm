@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10 tristate outputs with enables",
+  "expect": "success"
+}

@@ -1,0 +1,5 @@
+{
+  "description": "Only the last extension is replaced",
+  "expect": "success",
+  "input": "my.design.pld"
+}

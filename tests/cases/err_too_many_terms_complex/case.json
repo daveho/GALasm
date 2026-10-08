@@ -1,0 +1,5 @@
+{
+  "description": "Complex mode: 8 product terms",
+  "expect": "error",
+  "error_line": 6
+}
