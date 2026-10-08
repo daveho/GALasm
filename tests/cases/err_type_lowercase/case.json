@@ -1,0 +1,5 @@
+{
+  "description": "GAL type is case-sensitive",
+  "expect": "error",
+  "error_line": 1
+}

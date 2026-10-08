@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: AR is reserved",
+  "expect": "error",
+  "error_line": 3
+}

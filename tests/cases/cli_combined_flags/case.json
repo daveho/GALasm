@@ -1,0 +1,12 @@
+{
+  "description": "Option letters may be combined",
+  "expect": "success",
+  "args": [
+    "-sfp",
+    "{input}"
+  ],
+  "outputs": [
+    "jed",
+    "chp"
+  ]
+}

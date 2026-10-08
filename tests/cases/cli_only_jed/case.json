@@ -1,0 +1,13 @@
+{
+  "description": "-c -f -p suppress the chip, fuse and pin files",
+  "expect": "success",
+  "args": [
+    "-c",
+    "-f",
+    "-p",
+    "{input}"
+  ],
+  "outputs": [
+    "jed"
+  ]
+}

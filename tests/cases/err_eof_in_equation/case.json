@@ -1,0 +1,4 @@
+{
+  "description": "File ends inside an equation",
+  "expect": "error"
+}

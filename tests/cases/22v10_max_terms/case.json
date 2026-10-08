@@ -1,0 +1,13 @@
+{
+  "description": "GAL22V10: every output at its maximum product terms (8, 10, 12, 14, 16, 16, 14, 12, 10, 8)",
+  "expect": "success",
+  "args": [
+    "-c",
+    "-f",
+    "-p",
+    "{input}"
+  ],
+  "outputs": [
+    "jed"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "description": "Simple mode: 9 product terms",
+  "expect": "error",
+  "error_line": 8
+}

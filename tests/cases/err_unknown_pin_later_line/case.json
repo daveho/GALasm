@@ -1,0 +1,5 @@
+{
+  "description": "Error line is the line of the offending name",
+  "expect": "error",
+  "error_line": 8
+}

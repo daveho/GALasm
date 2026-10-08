@@ -1,0 +1,5 @@
+{
+  "description": "Pin name longer than 8 characters",
+  "expect": "error",
+  "error_line": 3
+}

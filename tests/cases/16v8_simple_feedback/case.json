@@ -1,0 +1,4 @@
+{
+  "description": "GAL16V8 stays in simple mode with feedback and OLMC inputs on pins other than 15/16",
+  "expect": "success"
+}

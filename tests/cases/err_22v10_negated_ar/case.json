@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: negated AR",
+  "expect": "error",
+  "error_line": 6
+}

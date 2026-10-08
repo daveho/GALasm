@@ -1,0 +1,14 @@
+GAL20V8
+LIMITS
+A B C D E F G H I J K GND
+M N O P Q R S T U V W VCC
+
+O.T = A + B + C + D + E + F + G
+P = A + B + C + D + E + F + G
+Q = A + B + C + D + E + F + G
+R = A + B + C + D + E + F + G
+S = A + B + C + D + E + F + G
+T = A + B + C + D + E + F + G
+U = A + B + C + D + E + F + G
+V = A + B + C + D + E + F + G
+DESCRIPTION

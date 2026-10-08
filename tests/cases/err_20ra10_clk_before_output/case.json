@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: .CLK before the output",
+  "expect": "error",
+  "error_line": 6
+}

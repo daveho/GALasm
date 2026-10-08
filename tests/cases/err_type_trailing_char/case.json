@@ -1,0 +1,5 @@
+{
+  "description": "GAL type followed by something other than space, tab or newline",
+  "expect": "error",
+  "error_line": 1
+}

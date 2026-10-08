@@ -1,0 +1,8 @@
+{
+  "description": "-s sets the security fuse (*G1)",
+  "expect": "success",
+  "args": [
+    "-s",
+    "{input}"
+  ]
+}

@@ -1,0 +1,10 @@
+GAL16V8
+HAND
+
+A B C D E F G H I GND
+J K L M N O P Q R VCC
+
+R = A * /B
+
+DESCRIPTION
+One AND term with an inverted input; every expected file was derived by hand.

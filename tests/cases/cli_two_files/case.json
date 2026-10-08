@@ -1,0 +1,8 @@
+{
+  "description": "More than one file name is a usage error",
+  "expect": "usage",
+  "args": [
+    "{input}",
+    "{input}"
+  ]
+}

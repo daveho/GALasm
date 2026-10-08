@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: 9 terms on pin 23",
+  "expect": "error",
+  "error_line": 6
+}

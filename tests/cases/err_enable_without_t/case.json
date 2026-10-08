@@ -1,0 +1,5 @@
+{
+  "description": ".E for an output defined without .T",
+  "expect": "error",
+  "error_line": 7
+}

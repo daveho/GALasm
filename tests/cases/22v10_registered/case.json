@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10 registers (active high and low) with feedback, enable on a register, AR and SP, pin 1 as input",
+  "expect": "success"
+}

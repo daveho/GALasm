@@ -1,0 +1,4 @@
+{
+  "description": "Free-form whitespace, tabs, comments and line breaks in pin list and equations",
+  "expect": "success"
+}

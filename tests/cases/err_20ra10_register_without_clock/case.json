@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: registered output without .CLK",
+  "expect": "error",
+  "error_pin": 14
+}

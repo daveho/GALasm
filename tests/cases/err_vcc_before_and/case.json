@@ -1,0 +1,5 @@
+{
+  "description": "VCC followed by an AND",
+  "expect": "error",
+  "error_line": 6
+}

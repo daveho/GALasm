@@ -1,0 +1,13 @@
+GAL22V10
+COMB22
+A B C D E F G H I J K GND
+L O14 O15 O16 O17 O18 O19 O20 O21 O22 O23 VCC
+O18 = A + B + C + D + E + F + G + H + I + J + K + L + /A + /B + /C + /D
+O14 = A + B + C + D + E + F + G + H
+O23 = A + B + C + D + E + F + G + H
+/O19 = A * B * C * D * E * F * G * H * I * J * K * L
+O17 = O18 * /O23
+O20 = GND
+O21 = VCC
+O22 = A * O16
+DESCRIPTION

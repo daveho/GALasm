@@ -1,0 +1,7 @@
+GAL22V10
+LIMITS
+A B C D E F G H I J K GND
+M N O P Q R S T U V W VCC
+
+S = A + B + C + D + E + F + G + H + I + J + K + M + /A + /B + /C + /D + /E
+DESCRIPTION

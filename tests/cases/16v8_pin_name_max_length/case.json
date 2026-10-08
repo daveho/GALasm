@@ -1,0 +1,4 @@
+{
+  "description": "Pin names of exactly 8 characters, with and without a negation sign",
+  "expect": "success"
+}

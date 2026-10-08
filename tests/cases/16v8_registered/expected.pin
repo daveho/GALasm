@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | CLK      | Clock
+   2   | D0       | Input
+   3   | D1       | Input
+   4   | D2       | Input
+   5   | D3       | Input
+   6   | EN       | Input
+   7   | X        | Input
+   8   | Y        | Input
+   9   | Z        | Input
+  10   | GND      | GND
+  11   | /OE      | /OE
+  12   | Q0       | Output
+  13   | Q1       | Output
+  14   | Q2       | Output
+  15   | Q3       | Output
+  16   | C0       | Output
+  17   | C1       | Output
+  18   | OUT1     | Output
+  19   | OUT2     | Output
+  20   | VCC      | VCC
+

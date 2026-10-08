@@ -1,0 +1,5 @@
+{
+  "description": "Suffixes are case-sensitive",
+  "expect": "error",
+  "error_line": 6
+}

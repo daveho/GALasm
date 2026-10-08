@@ -1,0 +1,5 @@
+{
+  "description": "No equations before DESCRIPTION",
+  "expect": "error",
+  "error_line": 6
+}

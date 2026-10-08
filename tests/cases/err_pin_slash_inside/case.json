@@ -1,0 +1,5 @@
+{
+  "description": "'/' inside a pin name",
+  "expect": "error",
+  "error_line": 3
+}

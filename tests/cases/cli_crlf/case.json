@@ -1,0 +1,9 @@
+{
+  "description": "-w writes the JEDEC file with CR LF line endings",
+  "expect": "success",
+  "args": [
+    "-w",
+    "{input}"
+  ],
+  "crlf": true
+}

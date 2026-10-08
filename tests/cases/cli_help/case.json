@@ -1,0 +1,7 @@
+{
+  "description": "-h prints usage and exits successfully without assembling",
+  "expect": "help",
+  "args": [
+    "-h"
+  ]
+}

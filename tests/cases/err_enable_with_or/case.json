@@ -1,0 +1,5 @@
+{
+  "description": ".E with more than one product term",
+  "expect": "error",
+  "error_line": 7
+}

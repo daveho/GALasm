@@ -1,0 +1,5 @@
+{
+  "description": "Two .E equations for one output",
+  "expect": "error",
+  "error_line": 8
+}

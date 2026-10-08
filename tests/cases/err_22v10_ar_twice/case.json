@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: AR defined twice",
+  "expect": "error",
+  "error_line": 7
+}

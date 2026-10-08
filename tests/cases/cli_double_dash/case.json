@@ -1,0 +1,9 @@
+{
+  "description": "-- ends the options",
+  "expect": "success",
+  "args": [
+    "-s",
+    "--",
+    "{input}"
+  ]
+}

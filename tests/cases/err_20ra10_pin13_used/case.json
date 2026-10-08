@@ -1,0 +1,5 @@
+{
+  "description": "GAL20RA10: pin 13 is /OE",
+  "expect": "error",
+  "error_line": 6
+}

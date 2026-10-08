@@ -1,0 +1,9 @@
+GAL16V8
+NEGATION
+/A /B C D E F G H I GND
+J /Y1 Y2 /Y3 Y4 Y5 Y6 Y7 Y8 VCC
+Y1 = A * B
+/Y3 = /A + C
+Y2 = !A & !B
+Y4 = Y1 + Y3
+DESCRIPTION

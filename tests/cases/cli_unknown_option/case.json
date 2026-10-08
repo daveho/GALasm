@@ -1,0 +1,8 @@
+{
+  "description": "An unknown option is a usage error",
+  "expect": "usage",
+  "args": [
+    "-x",
+    "{input}"
+  ]
+}

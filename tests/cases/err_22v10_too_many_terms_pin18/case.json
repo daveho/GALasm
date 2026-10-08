@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: 17 product terms on pin 18 (maximum 16)",
+  "expect": "error",
+  "error_line": 6
+}

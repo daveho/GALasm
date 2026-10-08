@@ -1,0 +1,5 @@
+{
+  "description": "No file name is a usage error",
+  "expect": "usage",
+  "args": []
+}

@@ -1,0 +1,5 @@
+{
+  "description": "/VCC in an equation",
+  "expect": "error",
+  "error_line": 6
+}

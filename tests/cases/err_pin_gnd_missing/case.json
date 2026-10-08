@@ -1,0 +1,5 @@
+{
+  "description": "Ground pin not named GND",
+  "expect": "error",
+  "error_line": 3
+}

@@ -1,0 +1,3 @@
+# Test inputs and expected outputs must reach every platform byte for byte:
+# no line-ending conversion on checkout.
+tests/cases/** -text

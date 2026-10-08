@@ -1,0 +1,5 @@
+{
+  "description": "GND combined with other terms",
+  "expect": "error",
+  "error_line": 6
+}

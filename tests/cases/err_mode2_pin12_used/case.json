@@ -1,0 +1,5 @@
+{
+  "description": "Complex mode: pin 12 has no feedback",
+  "expect": "error",
+  "error_line": 6
+}

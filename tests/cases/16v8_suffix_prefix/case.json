@@ -1,0 +1,4 @@
+{
+  "description": "Suffixes are recognised by their first letter for T, R and E (.Tri, .Enable)",
+  "expect": "success"
+}

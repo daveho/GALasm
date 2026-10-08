@@ -1,0 +1,5 @@
+{
+  "description": "Equation for a pin that has no OLMC",
+  "expect": "error",
+  "error_line": 6
+}

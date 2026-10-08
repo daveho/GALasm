@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10 combinational outputs: 16 terms on pin 18, 8 terms on pins 14 and 23, OLMC as input",
+  "expect": "success"
+}

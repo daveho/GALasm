@@ -1,0 +1,10 @@
+{
+  "description": "-w together with -a",
+  "expect": "success",
+  "args": [
+    "-w",
+    "-a",
+    "{input}"
+  ],
+  "crlf": true
+}

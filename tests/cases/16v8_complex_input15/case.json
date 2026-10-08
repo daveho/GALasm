@@ -1,0 +1,4 @@
+{
+  "description": "GAL16V8 switches to complex mode when pin 15 is an input; 7 terms is the complex-mode maximum",
+  "expect": "success"
+}

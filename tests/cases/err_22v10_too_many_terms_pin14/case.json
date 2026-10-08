@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: 9 terms on pin 14 (the OLMCs at both ends have 8)",
+  "expect": "error",
+  "error_line": 6
+}

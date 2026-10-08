@@ -1,0 +1,13 @@
+GAL20V8
+REG20
+CLK A B C D E F G H I J GND
+/OE K Q0 Q1 Q2 Q3 Q4 Q5 Q6 Q7 L VCC
+Q0.R = A
+Q1.R = Q0
+Q2.R = Q1 * /K
+/Q3.R = Q2 + L
+Q4 = A * B
+Q5.T = C
+Q5.E = D
+Q6.R = Q6 * /E + /Q6 * E
+DESCRIPTION

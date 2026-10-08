@@ -1,0 +1,5 @@
+{
+  "description": "VCC declared on a pin other than the supply pin",
+  "expect": "error",
+  "error_line": 4
+}

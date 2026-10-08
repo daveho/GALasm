@@ -1,0 +1,5 @@
+{
+  "description": "GND declared on a pin other than the ground pin",
+  "expect": "error",
+  "error_line": 3
+}

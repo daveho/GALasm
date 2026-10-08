@@ -1,0 +1,5 @@
+{
+  "description": "GAL20V8 registered mode: pin 1 is the clock",
+  "expect": "error",
+  "error_line": 6
+}

@@ -1,0 +1,5 @@
+{
+  "description": "GAL type must start the first line",
+  "expect": "error",
+  "error_line": 1
+}

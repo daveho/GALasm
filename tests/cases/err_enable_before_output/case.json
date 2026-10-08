@@ -1,0 +1,5 @@
+{
+  "description": ".E before the output's equation",
+  "expect": "error",
+  "error_line": 6
+}
