@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10 pin names containing an underscore, including declared names beginning with AR_ and SP_, alongside AR and SP",
+  "expect": "success"
+}

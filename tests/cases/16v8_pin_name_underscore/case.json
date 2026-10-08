@@ -1,0 +1,4 @@
+{
+  "description": "Pin names containing an underscore, with and without a negation sign, on both sides of equations",
+  "expect": "success"
+}
