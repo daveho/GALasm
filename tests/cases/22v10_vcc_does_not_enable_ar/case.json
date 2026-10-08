@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10: using VCC in equations does not enable the AR row; with AR undefined, row 0 is cleared",
+  "expect": "success"
+}

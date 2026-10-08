@@ -1108,12 +1108,15 @@ loop2:
 
         if (!pass)                              /* is this pass 1?*/
         {
+                                /* AR and SP can't appear in terms, so for */
+                                /* 22V10 stop at pin 23: pin 24 is VCC, not */
+                                /* the AR dummy OLMC                        */
             if (((gal_type == GAL16V8) &&       /* is this pin an OLMC pin? */
                  (actPin.p_Pin >= 12) && (actPin.p_Pin <= 19)) ||
                 ((gal_type == GAL20V8) &&
                  (actPin.p_Pin >= 15) && (actPin.p_Pin <= 22)) ||
                 ((gal_type == GAL22V10) &&
-                 (actPin.p_Pin >= 14) && (actPin.p_Pin <= DUMMY_OLMC12)) ||
+                 (actPin.p_Pin >= 14) && (actPin.p_Pin <= 23)) ||
                 ((gal_type == GAL20RA10) &&
                  (actPin.p_Pin >= 14) && (actPin.p_Pin <= 23)) )
             {
