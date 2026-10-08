@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10: AR = VCC and SP = VCC set every fuse in the AR and SP rows (reset and preset always asserted)",
+  "expect": "success"
+}
