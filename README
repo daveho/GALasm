@@ -48,6 +48,14 @@ The sources have been successfully compiled
 with SAS/C on the Amiga platform and with gcc
 on Debian GNU/Linux.
 
+To build, run "make" in the src directory.  Use
+"make CC=clang" to build with another compiler.
+On macOS, a universal (Intel and Apple Silicon)
+binary can be built with:
+
+  make clean
+  make ARCHS="x86_64 arm64"
+
 
 About GALs
 ----------
