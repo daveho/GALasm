@@ -1,0 +1,9 @@
+{
+  "description": "After --, a file name starting with - is a file name",
+  "expect": "success",
+  "args": [
+    "--",
+    "{input}"
+  ],
+  "input": "-design.pld"
+}

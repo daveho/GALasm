@@ -1,0 +1,7 @@
+{
+  "description": "Combined options with no file name are a usage error",
+  "expect": "usage",
+  "args": [
+    "-sc"
+  ]
+}
