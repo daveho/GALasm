@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Black-box conformance test runner for GALasm-compatible assemblers.
+"""Black-box conformance test runner for GALasm.
 
 Each directory under tests/cases/ is one test case containing:
 
@@ -43,8 +43,8 @@ DEFAULT_OUTPUTS = list(OUTPUT_EXTS)
 STX = 0x02
 ETX = 0x03
 
-# Header lines whose values identify the program that wrote the file.  An
-# implementation may put its own name and version there.
+# Header lines whose values identify the program that wrote the file and its
+# version.  They are ignored, so a change of version does not break the suite.
 PROGRAM_LINE = re.compile(rb"^(Used Program:|GAL-Assembler:)[^\r\n]*", re.M)
 
 

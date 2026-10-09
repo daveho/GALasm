@@ -1,10 +1,10 @@
 # GALasm conformance tests
 
-A black-box test suite for GALasm-compatible GAL assemblers.  It runs the
-assembler as a command-line program and checks its exit status, its error
-reports and the `.jed`, `.fus`, `.pin` and `.chp` files it writes.  It knows
-nothing about how the assembler is implemented, so it catches any change in
-behaviour, whatever the change to the code.
+A black-box test suite for GALasm.  It runs the assembler as a command-line
+program and checks its exit status, its error reports and the `.jed`,
+`.fus`, `.pin` and `.chp` files it writes.  It knows nothing about how the
+assembler is implemented, so it catches any change in behaviour, whatever
+the change to the code.
 
 Everything in this directory is under the MIT license (see `LICENSE`).
 
@@ -13,10 +13,10 @@ Everything in this directory is under the MIT license (see `LICENSE`).
 Requires Python 3 (standard library only).
 
 ```sh
-cd src && make && make check                 # build, then run the suite
-python3 tests/run_tests.py                   # test src/galasm
-python3 tests/run_tests.py --galasm path/to/other-assembler
-python3 tests/run_tests.py -k 22v10 -v       # only cases whose name contains "22v10"
+cd src && make && make check                        # build, then run the suite
+python3 tests/run_tests.py                          # test src/galasm
+python3 tests/run_tests.py --galasm path/to/galasm  # test another build
+python3 tests/run_tests.py -k 22v10 -v              # only cases whose name contains "22v10"
 ```
 
 The runner exits with status 0 when every case passes.
@@ -37,9 +37,9 @@ ends after it must give the same files as the whole source, and no run
 may crash.  It is mainly useful against a sanitizer build (below):
 
 ```sh
-python3 tests/test_truncated_sources.py                 # test src/galasm
-python3 tests/test_truncated_sources.py --galasm path/to/other-assembler
-python3 tests/test_truncated_sources.py --all           # every successful case
+python3 tests/test_truncated_sources.py                          # test src/galasm
+python3 tests/test_truncated_sources.py --galasm path/to/galasm  # test another build
+python3 tests/test_truncated_sources.py --all                    # every successful case
 ```
 
 ### With sanitizers

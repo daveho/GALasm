@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Truncated-source tests for GALasm-compatible assemblers.
+"""Truncated-source tests for GALasm.
 
 Takes the sources of a few successful conformance cases (SOURCES), or of
 all of them with --all, and assembles each prefix of each source, from
