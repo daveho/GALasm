@@ -461,12 +461,12 @@ int MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg)
 ** input:   galtype     type of GAL
 **          cfg			configuration structure
 **
-** output:  none
+** output:  0 on success, -1 if the file could not be written
 **
 ** remarks: generats the JEDEC file out of the JEDEC structure
 ******************************************************************************/
  
-void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
+int WriteJedecFile(char *filename, int galtype, struct Config *cfg)
 {
     struct  ActBuffer       mybuff;
     struct  Buffer          *first_buff;
@@ -497,7 +497,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
 	if(!(first_buff = (struct Buffer *) calloc(sizeof(struct Buffer),1)))
     {
         ErrorReq(2);                                /* out of memory? */
-        return;
+        return(-1);
     }
 
     mybuff.ThisBuff = first_buff;
@@ -510,7 +510,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
     {                                       /* put JEDEC in ram-buffer */
         FreeBuffer(first_buff);             /* error?                  */
         ErrorReq(2);
-        return;
+        return(-1);
     }
 
     if ((fp = fopen(filename, write_mode)))
@@ -534,7 +534,7 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
                 fclose(fp);
                 FreeBuffer(first_buff);
                 ErrorReq(13);
-                return;
+                return(-1);
             }
 
             if (!mybuff.ThisBuff->Next)         /* more buffers here? */
@@ -562,14 +562,14 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
                 {
                     FreeBuffer(first_buff);
                     ErrorReq(13);
-                    return;
+                    return(-1);
                 }
             }
             else
             {
                 FreeBuffer(first_buff);
                 ErrorReq(13);
-                return;
+                return(-1);
             }
         }
     }
@@ -577,10 +577,12 @@ void WriteJedecFile(char *filename, int galtype, struct Config *cfg)
     {
         FreeBuffer(first_buff);                     /* error?, then cancel*/
         ErrorReq(13);                               /* can't open file */
-        return;
+        return(-1);
     }
 
     FreeBuffer(first_buff);
+
+    return(0);
 }
 
 /*

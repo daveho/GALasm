@@ -1,0 +1,10 @@
+{
+  "description": "A fuse listing file that cannot be written is a failure; the files written before it remain and no later file is written",
+  "expect": "error",
+  "blocked_outputs": [
+    "fus"
+  ],
+  "outputs": [
+    "jed"
+  ]
+}

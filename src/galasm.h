@@ -243,9 +243,9 @@ int   IsDeclaredNegated(int pinnum, int numofpins);
 int   GetNextChar(void);
 int   GetNextLine(void);
 void  AsmError(int errornum, int pinnum);
-void  WriteChipFile(char *filename, int gal_type);
-void  WritePinFile(char *filename, int gal_type);
-void  WriteFuseFile(char *filename, int gal_type);
+int   WriteChipFile(char *filename, int gal_type);
+int   WritePinFile(char *filename, int gal_type);
+int   WriteFuseFile(char *filename, int gal_type);
 void  WriteSpaces(FILE *fp, int numof);
 void  WriteRow(FILE *fp, int row, int num_of_col);
 int   IsTypeEnd(UBYTE *ptr);
@@ -276,7 +276,7 @@ void  FileErrorReq(int errornum, char *filename);
 int      FileChecksum(char* filename, unsigned* pchecksum);
 unsigned FuseChecksum(int galtype);
 int      MakeJedecBuff(struct ActBuffer buff, int galtype, struct Config *cfg);
-void     WriteJedecFile(char *filename, int galtype, struct Config *cfg);
+int      WriteJedecFile(char *filename, int galtype, struct Config *cfg);
 
 
 /* EOF */

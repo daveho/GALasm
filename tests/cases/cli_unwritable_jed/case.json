@@ -1,0 +1,8 @@
+{
+  "description": "A JEDEC file that cannot be written is a failure; no output file is written",
+  "expect": "error",
+  "blocked_outputs": [
+    "jed"
+  ],
+  "outputs": []
+}

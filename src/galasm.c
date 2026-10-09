@@ -1477,7 +1477,7 @@ label1:
 
 					/* Obtain the filename without the extension */
 					{
-						char *base; int l;
+						char *base; int l, rc;
 
 
 						if((base = GetBaseName(file)))
@@ -1489,18 +1489,21 @@ label1:
 							base[l-3] = '.';
 
 							extman(base,l,'j','e','d');	
-							WriteJedecFile(base, gal_type, cfg);
+							rc = WriteJedecFile(base, gal_type, cfg);
 
 							extman(base,l,'f','u','s');	
-    	                    if(cfg->GenFuse) WriteFuseFile(base, gal_type);
+							if(!rc && cfg->GenFuse) rc = WriteFuseFile(base, gal_type);
 
 							extman(base,l,'p','i','n');	
-        	                if(cfg->GenPin ) WritePinFile (base, gal_type);
+							if(!rc && cfg->GenPin ) rc = WritePinFile (base, gal_type);
 
 							extman(base,l,'c','h','p');	
-            	            if(cfg->GenChip) WriteChipFile(base, gal_type);
+							if(!rc && cfg->GenChip) rc = WriteChipFile(base, gal_type);
 
 							free(base);
+
+							if(rc)
+								return(-2);	/* an output file could not be written */
 
 						}
 						else
@@ -2023,12 +2026,12 @@ int GetPinNum(int gal_type)
 ** input:   gal type
 **			filename 
 **
-** output:  none
+** output:  0 on success, -1 if the file could not be written
 **
 ** remarks: make chip file
 ******************************************************************************/
 
-void WriteChipFile(char *filename, int gal_type)
+int WriteChipFile(char *filename, int gal_type)
 {
     FILE    *fp;
     int     n;
@@ -2082,9 +2085,16 @@ void WriteChipFile(char *filename, int gal_type)
             if (fclose(fp) == EOF)
             {
                 ErrorReq(8);                   /* can't close file */
-                return;
+                return(-1);
             }
         }
+        else
+        {
+            ErrorReq(13);
+            return(-1);
+        }
+
+    return(0);
 }
 
 
@@ -2095,12 +2105,12 @@ void WriteChipFile(char *filename, int gal_type)
 ** input:   gal type
 **			filename
 **
-** output:  none
+** output:  0 on success, -1 if the file could not be written
 **
 ** remarks: make pin file
 ******************************************************************************/
 
-void WritePinFile(char *filename, int gal_type)
+int WritePinFile(char *filename, int gal_type)
 {
     FILE    *fp;
     int     k, n, flag;
@@ -2204,15 +2214,16 @@ void WritePinFile(char *filename, int gal_type)
             if (fclose(fp) == EOF)
             {
                 ErrorReq(8);                           /* can't close file */
-                return;
+                return(-1);
             }
         }
         else
         {
             ErrorReq(13);
-            return;
+            return(-1);
         }
 
+    return(0);
 }
 
 /******************************************************************************
@@ -2251,12 +2262,12 @@ void WriteRow(FILE *fp, int row, int num_of_col)
 ** input:   gal type
 **			filename
 **
-** output:  none
+** output:  0 on success, -1 if the file could not be written
 **
 ** remarks: make fuse file
 ******************************************************************************/
 
-void WriteFuseFile(char *filename, int gal_type)
+int WriteFuseFile(char *filename, int gal_type)
 {
     FILE    *fp;
     int     row, pin, n, numofOLMCs, numofrows, olmc;
@@ -2358,15 +2369,16 @@ void WriteFuseFile(char *filename, int gal_type)
             if (fclose(fp) == EOF)
             {
                 ErrorReq(8);                            /* can't close file */
-                return;
+                return(-1);
             }
         }
         else
         {
             ErrorReq(13);
-            return;
+            return(-1);
         }
 
+    return(0);
 }
 
 /******************************************************************************
