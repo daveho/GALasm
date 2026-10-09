@@ -1,0 +1,12 @@
+{
+  "description": "A chip diagram file that cannot be written is a failure; the files written before it remain and no later file is written",
+  "expect": "error",
+  "blocked_outputs": [
+    "chp"
+  ],
+  "outputs": [
+    "jed",
+    "fus",
+    "pin"
+  ]
+}
