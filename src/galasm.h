@@ -265,6 +265,7 @@ char *GetGALName(int galtype);
 char *GetPinName(UBYTE *pinnames, int pinnum);
 char *GetModeName(int mode);
 void  ErrorReq(int errornum);
+void  FileErrorReq(int errornum, char *filename);
 
 /* Jedec.c */
 int      FileChecksum(char* filename, unsigned* pchecksum);

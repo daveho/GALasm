@@ -1,7 +1,10 @@
 {
-  "description": "A file that does not exist is an error",
+  "description": "A file that does not exist is an error whose message names the file",
   "expect": "error",
   "args": [
+    "missing.pld"
+  ],
+  "must_mention": [
     "missing.pld"
   ]
 }

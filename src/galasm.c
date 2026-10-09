@@ -167,6 +167,12 @@ int AssemblePldFile(char *file, struct Config *cfg)
         {
             fsize = FileSize(file);
 
+            if (fsize < 0)
+            {
+                FileErrorReq(1, file);                  /* file not found */
+                return(-2);
+            }
+
 		if((fbuff = malloc(fsize)))
             {
                 if ((ReadFile(file, fsize, fbuff)))
@@ -1539,7 +1545,7 @@ label1:
                 }
                 else
                 {
-                    ErrorReq(3);                          /* read error */
+                    FileErrorReq(3, file);                /* read error */
 					free(fbuff);
                     return(-2);
                 }
