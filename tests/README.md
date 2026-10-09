@@ -4,7 +4,8 @@ A black-box test suite for GALasm.  It runs the assembler as a command-line
 program and checks its exit status, its error reports and the `.jed`,
 `.fus`, `.pin` and `.chp` files it writes.  It knows nothing about how the
 assembler is implemented, so it catches any change in behaviour, whatever
-the change to the code.
+the change to the code.  The behaviour it tests is specified in
+`../GALASM-SPEC.md`.
 
 Everything in this directory is under the MIT license (see `LICENSE`).
 
