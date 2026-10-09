@@ -1,0 +1,5 @@
+{
+  "description": "An odd number of negation signs on VCC",
+  "expect": "error",
+  "error_line": 6
+}

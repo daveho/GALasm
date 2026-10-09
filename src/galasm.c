@@ -1609,7 +1609,7 @@ void SetAND(int row, int pinnum, int negation, int gal_type)
 **
 **  global: actptr          pointer to the first character of the pinname
 **          actPin.p_Pin:   number of pin or NC_PIN; 0: no pin
-**          actPin.p_Neg:   pinname with '/' = 1;  without '/' = 0
+**          actPin.p_Neg:   odd number of '/' = 1;  even number or none = 0
 **
 ** output:  none
 **
@@ -1623,14 +1623,8 @@ void IsPinName(UBYTE *pinnames, int numofpins)
     char    *base;
 
 
-    actPin.p_Neg = 0;                   /* install structure for pin */
-    actPin.p_Pin = 0;
-
-    if (IsNEG(*actptr))
-    {                                   /* negation? */
-        actptr++;
-        actPin.p_Neg = 1;
-    }
+    actPin.p_Pin = 0;                   /* install structure for pin */
+    actPin.p_Neg = SkipNegations(&actptr);
 
     n = 0;                                /* get length of pin name */
 
@@ -1660,6 +1654,36 @@ void IsPinName(UBYTE *pinnames, int numofpins)
                 }
             }
     }
+}
+
+
+
+
+
+/******************************************************************************
+** SkipNegations()
+*******************************************************************************
+** input:   **ptr   pointer to a pointer to the first character of a target
+**                  or term of an equation
+**
+** output:  1: an odd number of negation signs, so the name is negated
+**          0: an even number of them, or none
+**          *ptr is moved past the negation signs
+**
+** remarks: a run of negation signs may mix '/' and '!'
+******************************************************************************/
+
+int SkipNegations(UBYTE **ptr)
+{
+    int neg = 0;
+
+    while (IsNEG(**ptr))
+    {
+        neg = !neg;
+        (*ptr)++;
+    }
+
+    return(neg);
 }
 
 
@@ -1717,7 +1741,7 @@ int IsDeclaredNegated(int pinnum, int numofpins)
 **
 ** output:  none
 **          global  actPin.p_Pin: 23: AR, 24: SP, 0: no AR, SP
-**                  actPin.p_Neg: pinname with '/' = 1;  without '/' = 0
+**                  actPin.p_Neg: odd number of '/' = 1;  even number or none = 0
 **
 ** remarks: This function tests whether actptr points to a AR or SP
 ******************************************************************************/
@@ -1728,14 +1752,8 @@ void Is_AR_SP(UBYTE *ptr)
     UBYTE   *oldptr;
 
 
-    actPin.p_Neg = 0;                     /* install structure for pin */
-    actPin.p_Pin = 0;
-
-    if (IsNEG(*ptr))
-    {                    /* negation? */
-        ptr++;
-        actPin.p_Neg = 1;
-    }
+    actPin.p_Pin = 0;                     /* install structure for pin */
+    actPin.p_Neg = SkipNegations(&ptr);
 
     n = 0;                                /* get length of pin name */
 
