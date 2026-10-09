@@ -155,7 +155,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
     UBYTE   *bool_start, *oldptr;
     char    prevOp;
     char    suffix_strn[MAX_SUFFIX_SIZE];
-    int     i = 0, j, k, l = 0, n, m;
+    int     k, l = 0, n, m;
     int     max_chr, pass, pin_num, bool_linenum;
     int     actOLMC, row_offset, newline, oldline;
     int     suffix, start_row, max_row, num_of_olmcs;
@@ -392,16 +392,8 @@ int AssemblePldFile(char *file, struct Config *cfg)
                 {
                     if (strcmp((char *)pinnames+l*10, "NC"))
                     {
-                        i = j = 0;
-
-                        if (IsNEG(*(pinnames+l*10)))  /* skip negation sign */
-                            i = 1;
-
-                        if (IsNEG(*(pinnames+n*10)))
-                            j = 1;
-
-                        if (!strcmp((char *)(pinnames+l*10+i),
-                                    (char *)(pinnames+n*10+j)))
+                        if (!strcmp(PinBaseName(pinnames+l*10),
+                                    PinBaseName(pinnames+n*10)))
                         {
                             AsmError(9, 0);       /* pin name defined twice */
                             return(-1);
@@ -1640,8 +1632,9 @@ void SetAND(int row, int pinnum, int negation, int gal_type)
  
 void IsPinName(UBYTE *pinnames, int numofpins)
 {
-    int     i, k, n;
+    int     k, n;
     UBYTE   *oldactptr;
+    char    *base;
 
 
     actPin.p_Neg = 0;                   /* install structure for pin */
@@ -1669,14 +1662,11 @@ void IsPinName(UBYTE *pinnames, int numofpins)
         else
             for (k = 0; k < numofpins; k++)
             {                           /* examine whole list of pin names */
-                i = 0;
-
-                if (IsNEG(*(pinnames+k*10)))
-                    i = 1;
+                base = PinBaseName(pinnames+k*10);
 
                                          /* are the string sizes equal? */
-                if (n == strlen((char *)(pinnames+k*10+i)))
-                    if (!(strncmp((char *)oldactptr, (char *)(pinnames+k*10+i),
+                if (n == strlen(base))
+                    if (!(strncmp((char *)oldactptr, base,
                           (size_t)n)))   /* yes, then compare these strings */
                 {
                     actPin.p_Pin = k + 1;
@@ -1684,6 +1674,27 @@ void IsPinName(UBYTE *pinnames, int numofpins)
                 }
             }
     }
+}
+
+
+
+
+
+/******************************************************************************
+** PinBaseName()
+*******************************************************************************
+** input:   *pinname    a pin name from the pin declaration
+**
+** output:  the pin name without its negation sign
+**
+******************************************************************************/
+
+char *PinBaseName(UBYTE *pinname)
+{
+    if (IsNEG(*pinname))
+        pinname++;
+
+    return((char *)pinname);
 }
 
 
