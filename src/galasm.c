@@ -289,10 +289,10 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
 
                                         /* end of signature: after eight */
-                                        /* characters, CR or TAB         */
+                                        /* characters, newline or TAB    */
 
 
-                while((*actptr != 0x0A) && (*actptr != 0x09) && (n < 8))
+                while(!IsLineEnd(actptr) && (*actptr != 0x09) && (n < 8))
                 {
                     chr = *actptr;
 
@@ -1839,7 +1839,30 @@ int GetNextLine(void)
 
 int IsTypeEnd(UBYTE *ptr)
 {
-    if (*ptr == ' ' || *ptr == 0x09 || *ptr == 0x0A)
+    if (*ptr == ' ' || *ptr == 0x09 || IsLineEnd(ptr))
+        return(1);
+    else
+        return(0);
+}
+
+
+
+
+
+/******************************************************************************
+** IsLineEnd()
+*******************************************************************************
+** input:   ptr    pointer into the source file
+**
+** output:  1: ptr points to a newline: LF or CR LF
+**          0: it does not
+**
+** remarks: a CR is only part of a newline when an LF follows it
+******************************************************************************/
+
+int IsLineEnd(UBYTE *ptr)
+{
+    if (*ptr == 0x0A || (*ptr == 0x0D && ptr + 1 < buffend && *(ptr+1) == 0x0A))
         return(1);
     else
         return(0);
