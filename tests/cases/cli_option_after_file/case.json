@@ -1,0 +1,8 @@
+{
+  "description": "Options come before the file name: a later argument is a second file name",
+  "expect": "usage",
+  "args": [
+    "{input}",
+    "-s"
+  ]
+}
