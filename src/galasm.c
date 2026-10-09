@@ -1063,7 +1063,7 @@ loop2:
         }
 
 
-        if (IsNEG(*(pinnames+(long)((actPin.p_Pin - 1)*10))))
+        if (IsDeclaredNegated(actPin.p_Pin, num_of_pins))
             actPin.p_Neg = !actPin.p_Neg;       /* consider negation in the */
                                                 /* pin declartion           */
 
@@ -1351,7 +1351,7 @@ label1:
                 return(-1);
             }
 
-            if (IsNEG(*(pinnames+(long)((actPin.p_Pin-1)*10))))
+            if (IsDeclaredNegated(actPin.p_Pin, num_of_pins))
                 actPin.p_Neg = !actPin.p_Neg; /* negation at pin declaration */
 
             goto loop1;
@@ -1677,6 +1677,29 @@ char *PinBaseName(UBYTE *pinname)
         pinname++;
 
     return((char *)pinname);
+}
+
+
+
+
+
+/******************************************************************************
+** IsDeclaredNegated()
+*******************************************************************************
+** input:   pinnum      number of the pin, or DUMMY_OLMC11/12 for AR/SP
+**          numofpins   number of pins (20 or 24, depends on the type of GAL)
+**
+** output:  1: the pin was declared with a negation sign
+**          0: it was not, or it is AR or SP, which are not declared
+**
+******************************************************************************/
+
+int IsDeclaredNegated(int pinnum, int numofpins)
+{
+    if (pinnum <= numofpins && IsNEG(*GetPinName(pinnames, pinnum)))
+        return(1);
+    else
+        return(0);
 }
 
 
