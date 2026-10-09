@@ -181,6 +181,10 @@ def check_case(galasm, case, update=False):
             raise CaseFailure("error reported for pin %s, expected pin %d\n%s"
                               % (m.group(1), case["error_pin"], console))
 
+    for text in case.get("must_mention", []):
+        if text not in console:
+            raise CaseFailure("console output does not mention %r\n%s" % (text, console))
+
     crlf = case.get("crlf", False)
     for ext in case["outputs"]:
         label = case["input"].rsplit(".", 1)[0] + "." + ext

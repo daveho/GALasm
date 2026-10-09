@@ -51,6 +51,7 @@ Each directory in `cases/` is one case:
 | `error_line` | The console output must contain `Error in line N:` with this N, or with one of the Ns if a list is given |
 | `error_pin` | The console output must contain `Error, pin N:` with this N |
 | `crlf` | The `.jed` file must use CR LF line endings throughout |
+| `must_mention` | Strings the console output must contain |
 
 ## How outputs are compared
 
@@ -60,7 +61,8 @@ Each directory in `cases/` is one case:
 * **Everything else.** The rest of every file must match byte for byte, including the fuse checksum (`*C`).
 
 The console output is only checked for the `Error in line N:` and
-`Error, pin N:` prefixes. Banner, progress and error-message text are free.
+`Error, pin N:` prefixes and for any `must_mention` strings. Banner,
+progress and the rest of the error-message text are free.
 
 ## Where the expectations come from
 
