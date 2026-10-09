@@ -30,6 +30,8 @@
 #define SUFFIX_APRST            5
 #define SUFFIX_ARST             6
 
+#define USAGE                   "Usage:\nGALasm [-scfpawv] <filename>\n"
+
 #define DUMMY_OLMC11            24
 #define DUMMY_OLMC12            25
 
@@ -2390,7 +2392,7 @@ void AsmError(int errornum, int pinnum)
 
 int main(int argc, char *argv[])
 {
-	int rc;
+	int rc, i;
   	char *p;
 
 	struct Config cfg;
@@ -2403,99 +2405,92 @@ int main(int argc, char *argv[])
 	cfg.ForceCRLF		= FALSE;
 	cfg.Verbose		= FALSE;
 
-	p = argv[1];
-
 	printf( "GALasm 2.1, Portable GAL Assembler\n"
 			"Copyright (c) 1998-2003 Alessandro Zummo. All Rights Reserved\n"
 			"Original sources Copyright (c) 1991-96 Christian Habermann\n\n");
 
 
-  	while(argc > 1 && (p[0] == '-' || (isalpha(p[1]) && (argc != 2)))) 
+	/* Options come before the file name.  A lone '-' or an argument */
+	/* starting with "--" ends them; the next argument is the file.  */
+
+	for (i = 1; i < argc && argv[i][0] == '-'; i++)
 	{
-    	switch(p[1]) 
+		p = argv[i];
+
+		if (p[1] == '\0' || p[1] == '-')
 		{
-      		case 's':
-			case 'S':
-				cfg.JedecSecBit = TRUE;
+			i++;
 			break;
+		}
 
-      		case 'c':
-			case 'C':
-				cfg.GenChip = FALSE;
-			break;
-
-      		case 'f':
-			case 'F':
-				cfg.GenFuse = FALSE;
-			break;
-
-      		case 'p':
-			case 'P':
-				cfg.GenPin = FALSE;
-			break;
-
-      		case 'a':
-			case 'A':
-				cfg.JedecFuseChk = TRUE;
-			break;
-
-			case 'w':
-			case 'W':
-				cfg.ForceCRLF = TRUE;
-			break;
-			case 'v':
-			case 'V':
-				cfg.Verbose = TRUE;
+		for (p++; *p; p++)
+		{
+	    	switch(*p) 
+			{
+	      		case 's':
+				case 'S':
+					cfg.JedecSecBit = TRUE;
 				break;
 
-			case 'h':
-			case 'H':
-			case '?':
-				printf("Usage:\nGALasm [-scfpawv] <filename>\n");
-				printf(	"-s Enable security fuse\n"
-						"-c Do not create the .chp file\n"
-						"-f Do not create the .fus file\n"
-						"-p Do not create the .pin file\n"
-						"-a Restrict checksum to the fuse array only\n"
-						"-w Force <CR><LF> line endings for .jed file overriding platform default\n"
-						"-v Verbose output\n");
-				return(0);
+	      		case 'c':
+				case 'C':
+					cfg.GenChip = FALSE;
+				break;
 
-      		case '-': 
-      		case '\0':
-			argc--;
-			argv++;
-			goto opt_done;
+	      		case 'f':
+				case 'F':
+					cfg.GenFuse = FALSE;
+				break;
 
-      		default:
-				goto usage;
-    	}
-		
+	      		case 'p':
+				case 'P':
+					cfg.GenPin = FALSE;
+				break;
 
-		if(!isalpha(p[2]))
-		{
-	    	argc--;
-    		argv++;
+	      		case 'a':
+				case 'A':
+					cfg.JedecFuseChk = TRUE;
+				break;
 
-			p = argv[1];
+				case 'w':
+				case 'W':
+					cfg.ForceCRLF = TRUE;
+				break;
+
+				case 'v':
+				case 'V':
+					cfg.Verbose = TRUE;
+				break;
+
+				case 'h':
+				case 'H':
+				case '?':
+					printf(USAGE);
+					printf(	"-s Enable security fuse\n"
+							"-c Do not create the .chp file\n"
+							"-f Do not create the .fus file\n"
+							"-p Do not create the .pin file\n"
+							"-a Restrict checksum to the fuse array only\n"
+							"-w Force <CR><LF> line endings for .jed file overriding platform default\n"
+							"-v Verbose output\n");
+					return(0);
+
+	      		default:
+					goto usage;
+	    	}
 		}
-		else
-			p++;
-  	}
+	}
 
-
-	opt_done:
-
-  	if(argc != 2) 
+	if (argc - i != 1)              /* exactly one file name */
 	{
 		usage:
-			printf("Usage:\nGALasm [-scfpawv] <filename>\n");
+			printf(USAGE);
 			printf("Type GALasm -h for help\n");
 		return(5);
-  	}
+	}
 
 
-	rc = AssemblePldFile(argv[1], &cfg);
+	rc = AssemblePldFile(argv[i], &cfg);
 
 	if(rc != 0)
 		printf("Assembling failed.\n");

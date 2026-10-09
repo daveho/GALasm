@@ -1,0 +1,9 @@
+{
+  "description": "A lone - ends the options",
+  "expect": "success",
+  "args": [
+    "-s",
+    "-",
+    "{input}"
+  ]
+}
