@@ -401,7 +401,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     }
                 }
                                                   /* is GND at the GND-pin? */
-                if (!strcmp((char *)(pinnames + n*10), "GND"))
+                if (!strcmp(PinBaseName(pinnames + n*10), "GND"))
                 {
                     if (n+1 != num_of_pins/2)
                     {
@@ -419,7 +419,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
                     }
                 }
                                                 /* is VCC at the VCC pin? */
-                if (!strcmp((char *)(pinnames + n*10), "VCC"))
+                if (!strcmp(PinBaseName(pinnames + n*10), "VCC"))
                 {
                     if (n+1 != num_of_pins)
                     {
