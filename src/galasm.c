@@ -217,11 +217,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                         num_of_col   = MAX_FUSE_ADR16 + 1; /* number of col.  */
                         gal_type     = GAL16V8;
 
-                        if ((*(actptr+7L) != ' ')  &&	/* Only ' ', newline and tab are valid 	*/
-                            (*(actptr+7L) != 0x0A) &&   /* after the GAL's name					*/
-                            (*(actptr+7L) != 0x09))		/* Any other char will produce an error */
+                        if (!IsTypeEnd(actptr + 7))
                         {
-                          AsmError(1, 0);
+                            AsmError(1, 0);
                             return(-1);
                         }
                     }
@@ -234,11 +232,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                         num_of_col   = MAX_FUSE_ADR20 + 1;/* num of col   */
                         gal_type     = GAL20V8;
 
-                        if ((*(actptr+7L) != ' ')  &&
-                            (*(actptr+7L) != 0x0A) &&
-                            (*(actptr+7L) != 0x09))
+                        if (!IsTypeEnd(actptr + 7))
                         {
-                              AsmError(1, 0);
+                            AsmError(1, 0);
                             return(-1);
                         }
                     }
@@ -251,11 +247,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                         num_of_col   = MAX_FUSE_ADR20RA10 + 1;
                         gal_type     = GAL20RA10;
 
-                        if ((*(actptr+9L) != ' ')  &&
-                            (*(actptr+9L) != 0x0A) &&
-                            (*(actptr+9L) != 0x09) )
+                        if (!IsTypeEnd(actptr + 9))
                         {
-                                AsmError(1, 0);
+                            AsmError(1, 0);
                             return(-1);
                         }
                     }
@@ -268,11 +262,9 @@ int AssemblePldFile(char *file, struct Config *cfg)
                         num_of_col   = MAX_FUSE_ADR22V10 + 1;
                         gal_type     = GAL22V10;
 
-                        if ((*(actptr+8L) != ' ')  &&
-                            (*(actptr+8L) != 0x0A) &&
-                            (*(actptr+8L) != 0x09))
+                        if (!IsTypeEnd(actptr + 8))
                         {
-                              AsmError(1, 0);
+                            AsmError(1, 0);
                             return(-1);
                         }
                     }
@@ -1829,6 +1821,29 @@ int GetNextLine(void)
     }
 }
 
+
+
+
+
+
+/******************************************************************************
+** IsTypeEnd()
+*******************************************************************************
+** input:   ptr    pointer to the byte after the type of GAL in line 1
+**
+** output:  1: the type of GAL is followed by a valid separator
+**          0: it is followed by something else
+**
+** remarks: only ' ', TAB and newline are valid after the GAL's name
+******************************************************************************/
+
+int IsTypeEnd(UBYTE *ptr)
+{
+    if (*ptr == ' ' || *ptr == 0x09 || *ptr == 0x0A)
+        return(1);
+    else
+        return(0);
+}
 
 
 
