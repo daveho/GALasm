@@ -351,3 +351,16 @@ void ErrorReq(int errornum)
 {
 	printf("Error: %s\n",ErrorArray[errornum]);
 }
+
+/******************************************************************************
+** FileErrorReq()
+*******************************************************************************
+** input:   error number
+**          name of the file the error is about
+**
+******************************************************************************/
+
+void FileErrorReq(int errornum, char *filename)
+{
+	printf("Error: %s: %s\n", filename, ErrorArray[errornum]);
+}
