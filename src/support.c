@@ -13,6 +13,25 @@
 #include <string.h>
  
 /******************************************************************************
+** IsPathSeparator(char chr)
+*******************************************************************************
+** input:   chr     character to test
+**
+** output:  1: chr separates the components of a path
+**          0: chr does not
+**
+******************************************************************************/
+
+static int IsPathSeparator(char chr)
+{
+#ifdef _WIN32
+	return(chr == '/' || chr == '\\' || chr == ':');
+#else
+	return(chr == '/');
+#endif
+}
+
+/******************************************************************************
 ** GetBaseName(char *filename)
 *******************************************************************************
 ** input:   *filename   filename
@@ -22,27 +41,27 @@
 **			or NULL.
 **
 ** remarks: the returned pointer must be free()ed 
+**          Only the last component of the path loses its extension;
+**          a '.' in a directory name is kept.
 **
 ******************************************************************************/
 
 char *GetBaseName(char *filename)
 {
-	int c,n;
+	int c,i,n;
 
 	char *p;
 
-	c = strlen(filename);
+	c = n = strlen(filename);
 
-	for(n = c; n != 0; n--)
+	for(i = c; i != 0 && !IsPathSeparator(filename[i-1]); i--)
 	{ 
-		if(filename[n-1] == '.')
+		if(filename[i-1] == '.')
 		{
-			n--;
+			n = i-1;
 			break;
 		}
 	}
-
-	if(n == 0) n = c;
 
 	if((p = (char *)malloc(n+5)))
 	{
