@@ -1,0 +1,4 @@
+{
+  "description": "A negation sign on the target of .E is ignored",
+  "expect": "success"
+}

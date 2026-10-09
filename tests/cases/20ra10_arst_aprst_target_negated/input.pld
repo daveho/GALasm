@@ -1,0 +1,14 @@
+GAL20RA10
+SIG
+/PL A B C D E F G H I J GND
+/OE M /N O P Q R S T U V VCC
+
+M.R = A
+M.CLK = B
+/M.ARST = C
+!M.APRST = D
+N.R = A
+N.CLK = B
+N.ARST = C
+/N.APRST = D
+DESCRIPTION

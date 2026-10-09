@@ -1,0 +1,4 @@
+{
+  "description": "A negation sign on the target of .CLK is ignored",
+  "expect": "success"
+}
