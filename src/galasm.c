@@ -873,13 +873,11 @@ loop1:
 
 
 
+                                /* a negation of the target of .E, .CLK, */
+                                /* .ARST and .APRST is ignored: these    */
+                                /* equations always give the condition   */
+                                /* that enables, clocks, resets, presets */
                 case SUFFIX_E:
-
-                    if (actPin.p_Neg)       /* negation of the trisate */
-                    {                       /* control is not allowed */
-                        AsmError(19, 0);
-                        return(-1);
-                    }
 
                     if (OLMC[n].TriCon)     /* tri. control twice? */
                     {                       /* yes, then error */
@@ -917,12 +915,6 @@ loop1:
 
                case SUFFIX_CLK:
 
-                    if (actPin.p_Neg)           /* negation of the .CLK   */
-                    {                           /* control is not allowed */
-                        AsmError(19, 0);
-                        return(-1);
-                    }
-
                     if (OLMC[n].PinType == NOTUSED)
                     {
                         AsmError(42, 0);        /* sequence must be: output */
@@ -949,12 +941,6 @@ loop1:
 
                 case SUFFIX_ARST:
 
-                    if (actPin.p_Neg)
-                    {                           /* negation of the .ARST  */
-                        AsmError(19, 0);        /* control is not allowed */
-                        return(-1);
-                    }
-
                     if (OLMC[n].PinType == NOTUSED)
                     {
                         AsmError(43, 0);        /* sequence must be: output */
@@ -980,12 +966,6 @@ loop1:
 
 
                 case SUFFIX_APRST:
-
-                    if (actPin.p_Neg)
-                    {                           /* negation of the .APRST */
-                        AsmError(19, 0);        /* control is not allowed */
-                        return(-1);
-                    }
 
                     if (OLMC[n].PinType == NOTUSED)
                     {
