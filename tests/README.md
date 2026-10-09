@@ -80,6 +80,7 @@ Each directory in `cases/` is one case:
 | `error_pin` | The console output must contain `Error, pin N:` with this N |
 | `crlf` | The `.jed` file must use CR LF line endings throughout |
 | `must_mention` | Strings the console output must contain |
+| `blocked_outputs` | Output extensions whose files cannot be written: a directory is created in place of each before the run |
 
 Whatever `expect` says, a run in which the assembler is killed by a
 signal, such as a crash, fails.

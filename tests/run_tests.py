@@ -67,12 +67,21 @@ def load_case(name):
     return case
 
 
+def output_path(case, workdir, ext):
+    stem = os.path.splitext(case["input"])[0]
+    return os.path.join(workdir, stem + "." + ext)
+
+
 def run_assembler(galasm, case, workdir):
     src = os.path.join(case["path"], "input.pld")
     if os.path.exists(src):
         dest = os.path.join(workdir, case["input"])
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         shutil.copyfile(src, dest)
+    # A directory where an output file belongs makes writing that file fail,
+    # whatever the user's privileges and on every platform.
+    for ext in case.get("blocked_outputs", []):
+        os.makedirs(output_path(case, workdir, ext))
     args = [a.replace("{input}", case["input"]) for a in case["args"]]
     proc = subprocess.run(
         [galasm] + args,
@@ -85,11 +94,10 @@ def run_assembler(galasm, case, workdir):
 
 
 def produced_outputs(case, workdir):
-    stem = os.path.splitext(case["input"])[0]
     found = {}
     for ext in OUTPUT_EXTS:
-        p = os.path.join(workdir, stem + "." + ext)
-        if os.path.exists(p):
+        p = output_path(case, workdir, ext)
+        if os.path.isfile(p):
             with open(p, "rb") as f:
                 found[ext] = f.read()
     return found
