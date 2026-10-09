@@ -1,0 +1,8 @@
+GAL16V8
+NCNEG
+A /NC NC !NC E F G H I GND
+J K /NC M N O P Q NC VCC
+
+M = A * E + /J
+DESCRIPTION
+Pins whose base name is NC, negated or not, may be repeated.

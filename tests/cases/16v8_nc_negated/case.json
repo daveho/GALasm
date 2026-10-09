@@ -1,0 +1,4 @@
+{
+  "description": "NC, /NC and !NC may each be declared on several pins, on input and OLMC pins",
+  "expect": "success"
+}
