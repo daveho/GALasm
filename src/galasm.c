@@ -175,12 +175,16 @@ int AssemblePldFile(char *file, struct Config *cfg)
                 return(-2);
             }
 
-		if((fbuff = malloc(fsize)))
+                                        /* the source is followed by a */
+                                        /* NUL, so that looking at the */
+                                        /* byte at buffend is safe     */
+		if((fbuff = malloc(fsize + 1)))
             {
                 if ((ReadFile(file, fsize, fbuff)))
                 {
                     actptr  = fbuff;
                     buffend = fbuff+fsize;
+                    *buffend = 0;
                     linenum = 1;
 
 /* This code generates a warning about exceeding array bounds */
@@ -1787,7 +1791,7 @@ int GetNextChar(void)
 
             case ';':                            /* comment found?         */
                 if (GetNextLine())               /* then skip rest of line */
-                    return(0);
+                    return(1);
                 break;
 
             default:
@@ -1823,15 +1827,15 @@ int GetNextLine(void)
 
     for(;;)
     {
+        if (actptr >= buffend)                      /* end of file? */
+            return(1);
+
         if (*actptr == 0x0A)
         {
             actptr++;
             linenum++;
             return(0);
         }
-
-        if (actptr > buffend)                       /* end of file? */
-            return(1);
 
         actptr++;
     }
