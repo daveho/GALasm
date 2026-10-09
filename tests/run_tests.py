@@ -150,6 +150,9 @@ def check_case(galasm, case, update=False):
     finally:
         shutil.rmtree(workdir, ignore_errors=True)
 
+    if rc < 0:
+        raise CaseFailure("assembler killed by signal %d\n%s" % (-rc, console))
+
     expect = case["expect"]
     if expect in ("success", "help"):
         if rc != 0:

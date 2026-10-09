@@ -53,6 +53,9 @@ Each directory in `cases/` is one case:
 | `crlf` | The `.jed` file must use CR LF line endings throughout |
 | `must_mention` | Strings the console output must contain |
 
+Whatever `expect` says, a run in which the assembler is killed by a
+signal, such as a crash, fails.
+
 ## How outputs are compared
 
 * **Line endings.** CR LF is converted to LF before comparing, so native Windows line endings are accepted. For cases with `"crlf": true`, the `.jed` file must use CR LF on every line.
