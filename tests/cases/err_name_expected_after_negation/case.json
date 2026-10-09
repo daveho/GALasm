@@ -1,0 +1,5 @@
+{
+  "description": "Whitespace between a negation sign and its name is reported at the negation sign",
+  "expect": "error",
+  "error_line": 6
+}

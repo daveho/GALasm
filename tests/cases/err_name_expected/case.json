@@ -1,0 +1,5 @@
+{
+  "description": "An operator where a pin name is expected",
+  "expect": "error",
+  "error_line": 6
+}
