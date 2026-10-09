@@ -390,7 +390,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
 
                 for (l = 0; l < n; l++)         /* pin name twice? */
                 {
-                    if (strcmp((char *)pinnames+l*10, "NC"))
+                    if (strcmp(PinBaseName(pinnames+l*10), "NC"))
                     {
                         if (!strcmp(PinBaseName(pinnames+l*10),
                                     PinBaseName(pinnames+n*10)))
