@@ -1,0 +1,4 @@
+{
+  "description": "LF twin of 16v8_crlf_source; both must produce the same files",
+  "expect": "success"
+}
