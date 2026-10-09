@@ -1,0 +1,5 @@
+{
+  "description": "GND with a negation sign on a pin other than the ground pin is reported at that pin",
+  "expect": "error",
+  "error_line": 3
+}
