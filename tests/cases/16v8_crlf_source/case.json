@@ -1,0 +1,4 @@
+{
+  "description": "A source file with CR LF line endings assembles exactly like the LF version; CR is not part of the signature",
+  "expect": "success"
+}

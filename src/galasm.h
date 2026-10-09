@@ -246,6 +246,7 @@ void  WriteFuseFile(char *filename, int gal_type);
 void  WriteSpaces(FILE *fp, int numof);
 void  WriteRow(FILE *fp, int row, int num_of_col);
 int   IsTypeEnd(UBYTE *ptr);
+int   IsLineEnd(UBYTE *ptr);
 int   IsOR(char);
 int   IsAND(char);
 int   IsNEG(char);

@@ -67,7 +67,7 @@ progress and the rest of the error-message text are free.
 ## Where the expectations come from
 
 * **Inputs.** Every `input.pld` was written for this suite.
-* **Expected outputs.** These were captured with `run_tests.py --update` from GALasm 2.1 at commit `c376d56`. The exception is `16v8_hand_derived`, whose expected files were worked out by hand from the device architecture and the JEDEC format. That case cross-checks the captured outputs.
+* **Expected outputs.** These were captured with `run_tests.py --update` from GALasm 2.1 at commit `c376d56`. The exception is `16v8_hand_derived`, whose expected files were worked out by hand from the device architecture and the JEDEC format. That case cross-checks the captured outputs. `16v8_crlf_source` shares its expected files with its LF twin, `16v8_crlf_source_lf_twin`.
 * **Error line numbers.** These were predicted by hand first and then confirmed against the assembler.
 
 `--update` only writes expected files that are missing. To regenerate one
