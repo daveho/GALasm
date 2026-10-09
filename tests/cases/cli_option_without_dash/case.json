@@ -1,0 +1,8 @@
+{
+  "description": "Options need a leading '-': a first argument without one is a file name, so two file names are a usage error",
+  "expect": "usage",
+  "args": [
+    "sc",
+    "{input}"
+  ]
+}
