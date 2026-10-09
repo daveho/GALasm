@@ -33,3 +33,28 @@ jobs:
       run: cd src && make check PYTHON=${{ matrix.python }}
     - name: makefile tests
       run: ${{ matrix.python }} tests/test_makefile.py
+
+  sanitizers:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      ASAN_OPTIONS: abort_on_error=1
+      UBSAN_OPTIONS: abort_on_error=1:print_stacktrace=1
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: make with AddressSanitizer and UndefinedBehaviorSanitizer
+      run: >-
+        cd src && make
+        CFLAGS="-g -O1 -fsanitize=address,undefined -fno-sanitize-recover=all"
+        LDFLAGS="-fsanitize=address,undefined"
+    - name: conformance tests
+      run: cd src && make check
+    - name: truncated sources
+      if: matrix.os == 'ubuntu-latest'
+      run: python3 tests/test_truncated_sources.py
