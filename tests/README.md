@@ -29,6 +29,34 @@ builds in a temporary copy of `src/`:
 python3 tests/test_makefile.py
 ```
 
+`test_truncated_sources.py` assembles every prefix of the sources of a
+few successful cases, chosen so that between them the prefixes end
+inside every part of the source language.  A prefix that ends before the
+`DESCRIPTION` keyword must be rejected without writing any file, one that
+ends after it must give the same files as the whole source, and no run
+may crash.  It is mainly useful against a sanitizer build (below):
+
+```sh
+python3 tests/test_truncated_sources.py                 # test src/galasm
+python3 tests/test_truncated_sources.py --galasm path/to/other-assembler
+python3 tests/test_truncated_sources.py --all           # every successful case
+```
+
+### With sanitizers
+
+A build with AddressSanitizer and UndefinedBehaviorSanitizer turns any
+read beyond the end of the source, or other memory error, into a crash,
+which both the suite and `test_truncated_sources.py` report.  With GCC or
+Clang:
+
+```sh
+cd src && make clean
+make CFLAGS="-g -O1 -fsanitize=address,undefined -fno-sanitize-recover=all" \
+     LDFLAGS="-fsanitize=address,undefined"
+export ASAN_OPTIONS=abort_on_error=1 UBSAN_OPTIONS=abort_on_error=1
+make check && python3 ../tests/test_truncated_sources.py
+```
+
 ## Case format
 
 Each directory in `cases/` is one case:
