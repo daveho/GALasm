@@ -1,0 +1,4 @@
+{
+  "description": "GAL22V10: an even number of negation signs is allowed on AR, SP and VCC; same files as 22v10_ar_sp_vcc",
+  "expect": "success"
+}

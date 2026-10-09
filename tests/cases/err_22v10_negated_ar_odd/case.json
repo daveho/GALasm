@@ -1,0 +1,5 @@
+{
+  "description": "GAL22V10: an odd number of negation signs on AR",
+  "expect": "error",
+  "error_line": 6
+}

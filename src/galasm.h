@@ -237,6 +237,7 @@ extern char *AsmErrorArray[];
 /*GALasm .c */
 void  SetAND(int row, int pinnum, int negation, int gal_type);
 void  IsPinName(UBYTE *pinnames, int numofpins);
+int   SkipNegations(UBYTE **ptr);
 char *PinBaseName(UBYTE *pinname);
 int   GetNextChar(void);
 int   GetNextLine(void);
