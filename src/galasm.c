@@ -156,7 +156,7 @@ int AssemblePldFile(char *file, struct Config *cfg)
     UBYTE   chr;
     UBYTE   *bool_start, *oldptr;
     char    prevOp;
-    char    suffix_strn[MAX_SUFFIX_SIZE];
+    char    suffix_strn[MAX_SUFFIX_SIZE + 1];
     int     k, l = 0, n, m;
     int     max_chr, pass, pin_num, bool_linenum;
     int     actOLMC, row_offset, newline, oldline;
