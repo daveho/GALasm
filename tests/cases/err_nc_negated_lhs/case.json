@@ -1,0 +1,5 @@
+{
+  "description": "A pin declared /NC is not connected: NC cannot be an output",
+  "expect": "error",
+  "error_line": 6
+}
