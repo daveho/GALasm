@@ -1,0 +1,4 @@
+{
+  "description": "Runs of negation signs in equations: an even number cancels out; same files as 16v8_declared_negation",
+  "expect": "success"
+}

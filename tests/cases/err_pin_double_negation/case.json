@@ -1,0 +1,5 @@
+{
+  "description": "A pin declaration allows only one negation sign",
+  "expect": "error",
+  "error_line": 3
+}
